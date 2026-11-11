@@ -1,0 +1,8 @@
+.Rodape_root {
+    padding: 8px 16px;
+    background-color: var(--cor-primaria);
+}
+
+.Rodape_root h2 {
+    color: var(--cor-branca);
+}
