@@ -1,10 +1,10 @@
 import "./Principal.css";
 
-function Principal() {
+function Principal(props) {
   return (
     <>
       <main className="Principal_root">
-        <h2>Principal</h2>
+        {props.children}
       </main>
     </>
   );

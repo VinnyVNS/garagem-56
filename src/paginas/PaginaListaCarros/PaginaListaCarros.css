@@ -1,0 +1,60 @@
+.PaginaListaCarros_root {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.PaginaListaCarros_carro {
+  display: flex;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+.PaginaListaCarros_carro img {
+  height: 100%;
+  width: 55%;
+}
+
+.PaginaListaCarros_carro .infos {
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+}
+
+.PaginaListaCarros_carro .infos .modelo {
+  font-size: 24px;
+}
+
+.PaginaListaCarros_addCarro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 94px;
+  right: 16px;
+  gap: 5px;
+}
+
+.PaginaListaCarros_textoAdd {
+  padding: 3px 5px;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: var(--cor-primaria);
+  color: var(--cor-secundaria);
+}
+
+.PaginaListaCarros_botaoAdd {
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  font-size: 24px;
+  cursor: pointer;
+  background-color: var(--cor-secundaria);
+  color: var(--cor-preta);
+}
+
+.PaginaListaCarros_vazia {
+  display: flex;
+  justify-content: center;
+  margin-top: 20%;
+}

@@ -4,7 +4,7 @@ function Rodape() {
   return (
     <>
       <footer className="Rodape_root">
-        <h2>Rodape</h2>
+        <span>Carros</span>
       </footer>
     </>
   );

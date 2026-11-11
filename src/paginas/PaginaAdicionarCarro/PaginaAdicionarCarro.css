@@ -1,0 +1,17 @@
+.PaginaAdicionarCarro_root {
+    display: flex;
+    flex-direction: column;
+}
+
+.PaginaAdicionarCarro_voltar {
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.PaginaAdicionarCarro_campo {
+    padding: 0 20px;
+}
+
+.PaginaAdicionarCarro_botao {
+    padding: 20px;
+}

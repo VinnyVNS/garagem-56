@@ -3,6 +3,8 @@
     background-color: var(--cor-primaria);
 }
 
-.Rodape_root h2 {
+.Rodape_root span {
+    display: flex;
+    justify-content: center;
     color: var(--cor-branca);
 }
