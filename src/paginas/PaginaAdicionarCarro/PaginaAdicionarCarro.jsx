@@ -64,7 +64,7 @@ function PaginaAdicionarCarro() {
       autoClose: 2000,
     });
 
-    navigate("/")
+    navigate("/lista-carros")
 
     console.log(formCarro);
   };
@@ -75,7 +75,7 @@ function PaginaAdicionarCarro() {
         <div className="PaginaAdicionarCarro_voltar">
           <IoArrowBack
             className="PaginaAdicionarCarro_voltar_botao"
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/lista-carros")}
           />
         </div>
 
