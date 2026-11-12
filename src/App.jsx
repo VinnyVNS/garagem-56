@@ -1,3 +1,5 @@
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 import Cabecalho from "./componentes/Cabecalho/Cabecalho";
 import Rodape from "./componentes/Rodape/Rodape";
@@ -7,8 +9,11 @@ function App() {
   return (
     <>
       <Cabecalho />
-      <Roteador />
+      <div className="App_conteudo">
+        <Roteador />
+      </div>
       <Rodape />
+      <ToastContainer />
     </>
   );
 }

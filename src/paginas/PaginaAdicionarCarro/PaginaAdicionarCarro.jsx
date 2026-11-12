@@ -5,7 +5,8 @@ import Principal from "../../componentes/Principal/Principal";
 import "./PaginaAdicionarCarro.css";
 import { salvarCarro } from "../../servicos/carros.servico";
 import { useNavigate } from "react-router-dom";
-import { FaArrowAltCircleLeft } from "react-icons/fa";
+import { IoArrowBack } from "react-icons/io5";
+import { toast } from "react-toastify";
 
 function PaginaAdicionarCarro() {
   const navigate = useNavigate();
@@ -20,7 +21,50 @@ function PaginaAdicionarCarro() {
   });
 
   const salvar = () => {
+    if (!formCarro.marca.trim()) {
+      toast.error("O campo marca é obrigatório!", {
+        theme: "colored",
+        hideProgressBar: true,
+        autoClose: 2000,
+      });
+      return;
+    }
+
+    if (!formCarro.modelo.trim()) {
+      toast.error("O campo modelo é obrigatório!", {
+        theme: "colored",
+        hideProgressBar: true,
+        autoClose: 2000,
+      });
+      return;
+    }
+
+    if (!formCarro.ano.trim()) {
+      toast.error("O campo ano é obrigatório!", {
+        theme: "colored",
+        hideProgressBar: true,
+        autoClose: 2000,
+      });
+      return;
+    }
+
+    if (!formCarro.cor.trim()) {
+      toast.error("O campo cor é obrigatório!", {
+        theme: "colored",
+        hideProgressBar: true,
+        autoClose: 2000,
+      });
+      return;
+    }
+
     salvarCarro(formCarro);
+    toast.success("Carro adicionado com sucesso!", {
+      theme: "colored",
+      hideProgressBar: true,
+      autoClose: 2000,
+    });
+
+    navigate("/")
 
     console.log(formCarro);
   };
@@ -29,11 +73,15 @@ function PaginaAdicionarCarro() {
     <Principal>
       <div className="PaginaAdicionarCarro_root">
         <div className="PaginaAdicionarCarro_voltar">
-          <FaArrowAltCircleLeft size={30} onClick={() => navigate("/")} />
+          <IoArrowBack
+            className="PaginaAdicionarCarro_voltar_botao"
+            onClick={() => navigate("/")}
+          />
         </div>
 
         <div className="PaginaAdicionarCarro_campo">
           <CampoCustomizado
+            tipo="input"
             label="Marca"
             maxLength={20}
             placeholder="Digite a marca do carro..."
@@ -44,6 +92,7 @@ function PaginaAdicionarCarro() {
           />
 
           <CampoCustomizado
+            tipo="input"
             label="Modelo"
             maxLength={20}
             placeholder="Digite o modelo do carro..."
@@ -54,6 +103,7 @@ function PaginaAdicionarCarro() {
           />
 
           <CampoCustomizado
+            tipo="input"
             label="Ano"
             maxLength={4}
             placeholder="Digite o ano do carro..."
@@ -64,6 +114,7 @@ function PaginaAdicionarCarro() {
           />
 
           <CampoCustomizado
+            tipo="input"
             label="Cor"
             maxLength={10}
             placeholder="Digite a cor do carro..."
@@ -74,6 +125,7 @@ function PaginaAdicionarCarro() {
           />
 
           <CampoCustomizado
+            tipo="input"
             label="Placa"
             maxLength={8}
             placeholder="Digite a placa do carro..."
@@ -84,6 +136,7 @@ function PaginaAdicionarCarro() {
           />
 
           <CampoCustomizado
+            tipo="foto"
             type="file"
             accept="image/*"
             label="Foto"
@@ -105,10 +158,11 @@ function PaginaAdicionarCarro() {
                 src={formCarro.foto}
                 alt="Foto do Cliente"
                 style={{
-                  width: "150px",
-                  height: "150px",
+                  width: "100%",
+                  height: "50%",
                   objectFit: "cover",
-                  borderRadius: "8px",
+                  borderRadius: "20px",
+                  padding: "10px",
                 }}
               />
             </div>

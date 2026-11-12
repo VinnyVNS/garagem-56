@@ -1,24 +1,30 @@
 .PaginaListaCarros_root {
   display: flex;
   flex-direction: column;
+  gap: 5px;
   padding: 10px;
+  margin-bottom: 20%;
 }
 
 .PaginaListaCarros_carro {
   display: flex;
+  width: 100%;
+  height: 130px;
   border: 2px solid black;
   border-radius: 10px;
 }
 
 .PaginaListaCarros_carro img {
+  padding: 5px;
   height: 100%;
-  width: 55%;
+  width: 50%;
+  border-radius: 10px;
 }
 
 .PaginaListaCarros_carro .infos {
   display: flex;
   flex-direction: column;
-  padding-left: 10px;
+  padding-left: 20px;
 }
 
 .PaginaListaCarros_carro .infos .modelo {
