@@ -10,40 +10,82 @@
     background-color: var(--cor-primaria);
 }
 
-.Rodape_home {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    cursor: pointer;
-}
 
-.Rodape_home .home_foto {
-    width: 35px;
-    height: 35px;
-    color: var(--cor-branca);
-}
-
-.Rodape_home .home_texto {
-    font-size: 16px;
-    color: var(--cor-branca);
-}
-
-.Rodape_carros {
+.Rodape_home_ativo {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.Rodape_carros .carros_foto {
+.Rodape_home_ativo .home_foto {
     width: 35px;
     height: 35px;
     color: var(--cor-secundaria);
 }
 
-.Rodape_carros .carros_texto {
+.Rodape_home_ativo .home_texto {
     font-size: 16px;
     color: var(--cor-secundaria);
 }
+
+
+
+.Rodape_home_inativo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Rodape_home_inativo .home_foto {
+    width: 35px;
+    height: 35px;
+    color: var(--cor-branca);
+}
+
+.Rodape_home_inativo .home_texto {
+    font-size: 16px;
+    color: var(--cor-branca);
+}
+
+
+
+.Rodape_carros_ativo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Rodape_carros_ativo .carros_foto {
+    width: 35px;
+    height: 35px;
+    color: var(--cor-secundaria);
+}
+
+.Rodape_carros_ativo .carros_texto {
+    font-size: 16px;
+    color: var(--cor-secundaria);
+}
+
+
+
+.Rodape_carros_inativo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Rodape_carros_inativo .carros_foto {
+    width: 35px;
+    height: 35px;
+    color: var(--cor-branca);
+}
+
+.Rodape_carros_inativo .carros_texto {
+    font-size: 16px;
+    color: var(--cor-branca);
+}
+
+
 
 .Rodape_perfil {
     display: flex;

@@ -1,11 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BotaoCustomizado from "../../componentes/BotaoCustomizado/BotaoCustomizado";
 import CampoCustomizado from "../../componentes/CampoCustomizado/CampoCustomizado";
 import Principal from "../../componentes/Principal/Principal";
 import "./PaginaAdicionarCarro.css";
-import { salvarCarro } from "../../servicos/carros.servico";
-import { useNavigate } from "react-router-dom";
-import { IoArrowBack } from "react-icons/io5";
+import { buscarCarros, salvarCarro } from "../../servicos/carros.servico";
+import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
 function PaginaAdicionarCarro() {
@@ -19,6 +18,20 @@ function PaginaAdicionarCarro() {
     cor: "",
     placa: "",
   });
+
+  const params = useParams();
+
+  useEffect(() => {
+    if (params.id) {
+      const carroParaEditar = buscarCarros().find(
+        (item) => item.id === +params.id,
+      );
+
+      if (carroParaEditar) {
+        setFormCarro(carroParaEditar);
+      }
+    }
+  }, [params.id]);
 
   const salvar = () => {
     if (!formCarro.marca.trim()) {
@@ -64,7 +77,7 @@ function PaginaAdicionarCarro() {
       autoClose: 2000,
     });
 
-    navigate("/lista-carros")
+    navigate("/lista-carros");
 
     console.log(formCarro);
   };
@@ -72,13 +85,6 @@ function PaginaAdicionarCarro() {
   return (
     <Principal>
       <div className="PaginaAdicionarCarro_root">
-        <div className="PaginaAdicionarCarro_voltar">
-          <IoArrowBack
-            className="PaginaAdicionarCarro_voltar_botao"
-            onClick={() => navigate("/lista-carros")}
-          />
-        </div>
-
         <div className="PaginaAdicionarCarro_campo">
           <CampoCustomizado
             tipo="input"
@@ -140,12 +146,31 @@ function PaginaAdicionarCarro() {
             type="file"
             accept="image/*"
             label="Foto"
+            onClick={(e) => {
+              e.target.value = null;
+            }}
             onChange={(e) => {
               const imagem = e.target.files[0];
               if (imagem) {
                 const reader = new FileReader();
                 reader.onload = (event) => {
-                  setFormCarro({ ...formCarro, foto: event.target.result });
+                  const imgTemp = new Image();
+                  imgTemp.onload = () => {
+                    if (imgTemp.height > imgTemp.width) {
+                      toast.error(
+                        "Por favor, escolha uma foto na horizontal.",
+                        {
+                          theme: "colored",
+                          hideProgressBar: true,
+                          autoClose: 2000,
+                        },
+                      );
+                      input.value = "";
+                      return;
+                    }
+                    setFormCarro({ ...formCarro, foto: event.target.result });
+                  };
+                  imgTemp.src = event.target.result;
                 };
                 reader.readAsDataURL(imagem);
               }
@@ -153,10 +178,40 @@ function PaginaAdicionarCarro() {
           />
 
           {formCarro.foto && (
-            <div>
+            <div
+              style={{
+                position: "relative",
+                display: "inline-block",
+                width: "100%",
+              }}
+            >
+              <button
+                type="button"
+                onClick={() => setFormCarro({ ...formCarro, foto: "" })}
+                style={{
+                  position: "absolute",
+                  top: "20px",
+                  right: "20px",
+                  backgroundColor: "rgba(231, 76, 60, 0.9)",
+                  color: "white",
+                  border: "none",
+                  borderRadius: "50%",
+                  width: "30px",
+                  height: "30px",
+                  fontWeight: "bold",
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  boxShadow: "0 2px 5px rgba(0,0,0,0.3)",
+                }}
+              >
+                X
+              </button>
+
               <img
                 src={formCarro.foto}
-                alt="Foto do Cliente"
+                alt="Foto do Carro"
                 style={{
                   width: "100%",
                   height: "50%",

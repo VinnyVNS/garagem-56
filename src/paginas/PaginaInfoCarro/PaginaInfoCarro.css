@@ -1,0 +1,122 @@
+.PaginaInfoCarro_root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.PaginaInfoCarro_carro {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 380px;
+  border: 2px solid black;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  overflow: hidden;
+}
+
+.PaginaInfoCarro_carro .carro_foto {
+  object-fit: cover;
+  width: 100%;
+  height: 200px;
+  border-bottom: 2px solid black;
+}
+
+.PaginaInfoCarro_carro .modelo_icones {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px;
+  min-height: 45px;
+}
+
+.PaginaInfoCarro_carro .modelo_carro {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 32px;
+  white-space: nowrap;
+}
+
+.PaginaInfoCarro_carro .icones {
+  display: flex;
+  gap: 8px;
+  z-index: 2;
+}
+
+.PaginaInfoCarro_carro .editor {
+  color: var(--cor-primaria);
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+}
+
+.PaginaInfoCarro_carro .lixeira {
+  color: var(--cor-vermelha);
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+
+.PaginaInfoCarro_carro .infos_carro {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px 10px 20px;
+}
+
+.PaginaInfoCarro_carro .textos_info {
+  display: flex;
+  flex-direction: column;
+}
+
+.PaginaInfoCarro_carro .texto {
+  font-size: 18px;
+  padding: 5px;
+}
+
+.PaginaInfoCarro_servicos {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.PaginaInfoCarro_servicos .servicos_titulo {
+  display: flex;
+  justify-content: center;
+  font-size: 36px;
+}
+
+.PaginaInfoCarro_servicos .servicos_vazia {
+  display: flex;
+  justify-content: center;
+  margin-top: 20%;
+}
+
+.toast_exclusao_texto {
+  margin: 0 0 10px 0;
+  font-weight: bold;
+}
+
+.toast_exclusao_botoes {
+  display: flex;
+  gap: 20px;
+}
+
+.toast_btn {
+  color: var(--cor-branca);
+  width: 50%;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.toast_btn_sim {
+  background: var(--cor-vermelha);
+}
+
+.toast_btn_nao {
+  background: var(--cor-verde);
+}

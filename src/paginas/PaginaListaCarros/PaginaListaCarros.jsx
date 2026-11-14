@@ -10,12 +10,20 @@ function PaginaListaCarros() {
 
   const [carros, setCarros] = useState(buscarCarros());
 
+  const irParaInfo = (carro) => {
+    navigate(`/info-carro/${carro.id}`, { state: { carro: carro } })
+  }
+
   return (
     <Principal>
       <div className="PaginaListaCarros_root">
         {carros.map((carro) => {
           return (
-            <div key={carro.id} className="PaginaListaCarros_carro">
+            <div
+              onClick={() => irParaInfo(carro)}
+              key={carro.id}
+              className="PaginaListaCarros_carro"
+            >
               <img src={carro.foto} />
 
               <div className="infos">

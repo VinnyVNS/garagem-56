@@ -12,10 +12,12 @@
   height: 130px;
   border: 2px solid black;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .PaginaListaCarros_carro img {
-  padding: 5px;
+  object-fit: cover;
+  padding: 2px;
   height: 100%;
   width: 50%;
   border-radius: 10px;

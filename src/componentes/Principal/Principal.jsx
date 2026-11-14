@@ -7,7 +7,7 @@ function Principal(props) {
     <>
       <Cabecalho />
       <main className="Principal_root">{props.children}</main>
-      <Rodape home="/" carros="/lista-carros" />
+      <Rodape />
     </>
   );
 }
