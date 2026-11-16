@@ -1,0 +1,35 @@
+.InputCustom_root {
+    display: flex;
+    flex-direction: column;
+}
+
+.InputCustom_root > .label {
+    padding: 0 10px;
+    font-size: 24px;
+    transition: .1s ease;
+}
+
+.InputCustom_root:focus-within > .label {
+    transition: .1s ease;
+    color: var(--cor-primaria);
+}
+
+.InputCustom_root > .input {
+  width: 100%;
+  height: 50px;
+  padding: 10px;
+  font-size: 20px;
+  border: 2px solid black;
+  border-radius: 10px;
+  transition: .1s ease;
+  background-color: white;
+}
+
+.InputCustom_root > .input:focus {
+  border: 4px solid var(--cor-primaria);
+  transition: .1s ease;
+  transition-property: border;
+  color: var(--cor-primaria);
+  outline-color: var(--cor-primaria);
+  background-color: white;
+}

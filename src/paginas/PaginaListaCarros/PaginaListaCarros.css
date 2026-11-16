@@ -3,7 +3,6 @@
   flex-direction: column;
   gap: 5px;
   padding: 10px;
-  margin-bottom: 20%;
 }
 
 .PaginaListaCarros_carro {
@@ -33,30 +32,37 @@
   font-size: 24px;
 }
 
-.PaginaListaCarros_addCarro {
+.PaginaListaCarros_btnAddCarro {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
+  align-items: center;
+  height: 80px;
+  padding-right: 10px;
+  pointer-events: none;
+}
+
+.PaginaListaCarros_btnAddCarro > .click {
+  display: flex;
   align-items: center;
   position: fixed;
   bottom: 94px;
-  right: 16px;
   gap: 5px;
+  cursor: pointer;
+  pointer-events: auto;
 }
 
-.PaginaListaCarros_textoAdd {
+.PaginaListaCarros_btnAddCarro > .click > .texto {
   padding: 3px 5px;
   border-radius: 10px;
-  cursor: pointer;
   background-color: var(--cor-primaria);
   color: var(--cor-secundaria);
 }
 
-.PaginaListaCarros_botaoAdd {
+.PaginaListaCarros_btnAddCarro > .click > .btn_redondo {
   border-radius: 50%;
   width: 70px;
   height: 70px;
   font-size: 24px;
-  cursor: pointer;
   background-color: var(--cor-secundaria);
   color: var(--cor-preta);
 }

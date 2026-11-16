@@ -11,8 +11,8 @@ function PaginaListaCarros() {
   const [carros, setCarros] = useState(buscarCarros());
 
   const irParaInfo = (carro) => {
-    navigate(`/info-carro/${carro.id}`, { state: { carro: carro } })
-  }
+    navigate(`/info-carro/${carro.id}`, { state: { carro: carro } });
+  };
 
   return (
     <Principal>
@@ -35,18 +35,10 @@ function PaginaListaCarros() {
           );
         })}
 
-        <div className="PaginaListaCarros_addCarro">
-          <div>
-            <span
-              className="PaginaListaCarros_textoAdd"
-              onClick={() => navigate("/adicionar-carro")}
-            >
-              Adicionar Carro
-            </span>
-          </div>
-
-          <div className="PaginaListaCarros_botaoAdd">
-            <IoIosAdd size={70} onClick={() => navigate("/adicionar-carro")} />
+        <div className="PaginaListaCarros_btnAddCarro">
+          <div className="click" onClick={() => navigate("/adicionar-carro")}>
+            <IoIosAdd className="btn_redondo" />
+            <span className="texto">Adicionar Carro</span>
           </div>
         </div>
       </div>

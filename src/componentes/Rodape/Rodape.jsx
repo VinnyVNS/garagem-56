@@ -12,11 +12,16 @@ function Rodape() {
     location.pathname.includes("adicionar-carro") ||
     location.pathname.includes("info-carro");
 
+  const rolarParaOTopo = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <>
       <footer className="Rodape_root">
         <NavLink
           to={"/"}
+          onClick={rolarParaOTopo}
           className={({ isActive }) =>
             isActive ? "Rodape_home_ativo" : "Rodape_home_inativo"
           }
@@ -27,7 +32,9 @@ function Rodape() {
 
         <NavLink
           to={"/lista-carros"}
-          className={isCarrosAtivo ? "Rodape_carros_ativo" : "Rodape_carros_inativo"
+          onClick={rolarParaOTopo}
+          className={
+            isCarrosAtivo ? "Rodape_carros_ativo" : "Rodape_carros_inativo"
           }
         >
           <FaCar className="carros_foto" />

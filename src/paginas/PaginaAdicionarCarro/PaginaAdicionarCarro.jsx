@@ -6,6 +6,8 @@ import "./PaginaAdicionarCarro.css";
 import { buscarCarros, salvarCarro } from "../../servicos/carros.servico";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import BtnAddFoto from "../../componentes/BtnAddFoto/BtnAddFoto";
+import InputCustom from "../../componentes/InputCustom/InputCustom";
 
 function PaginaAdicionarCarro() {
   const navigate = useNavigate();
@@ -36,6 +38,7 @@ function PaginaAdicionarCarro() {
   const salvar = () => {
     if (!formCarro.marca.trim()) {
       toast.error("O campo marca é obrigatório!", {
+        position: "top-center",
         theme: "colored",
         hideProgressBar: true,
         autoClose: 2000,
@@ -86,8 +89,8 @@ function PaginaAdicionarCarro() {
     <Principal>
       <div className="PaginaAdicionarCarro_root">
         <div className="PaginaAdicionarCarro_campo">
-          <CampoCustomizado
-            tipo="input"
+          <InputCustom
+            type="input"
             label="Marca"
             maxLength={20}
             placeholder="Digite a marca do carro..."
@@ -96,8 +99,7 @@ function PaginaAdicionarCarro() {
               setFormCarro({ ...formCarro, marca: e.target.value })
             }
           />
-
-          <CampoCustomizado
+          <InputCustom
             tipo="input"
             label="Modelo"
             maxLength={20}
@@ -108,7 +110,7 @@ function PaginaAdicionarCarro() {
             }
           />
 
-          <CampoCustomizado
+          <InputCustom
             tipo="input"
             label="Ano"
             maxLength={4}
@@ -119,7 +121,7 @@ function PaginaAdicionarCarro() {
             }
           />
 
-          <CampoCustomizado
+          <InputCustom
             tipo="input"
             label="Cor"
             maxLength={10}
@@ -130,7 +132,7 @@ function PaginaAdicionarCarro() {
             }
           />
 
-          <CampoCustomizado
+          <InputCustom
             tipo="input"
             label="Placa"
             maxLength={8}
@@ -141,43 +143,7 @@ function PaginaAdicionarCarro() {
             }
           />
 
-          <CampoCustomizado
-            tipo="foto"
-            type="file"
-            accept="image/*"
-            label="Foto"
-            onClick={(e) => {
-              e.target.value = null;
-            }}
-            onChange={(e) => {
-              const imagem = e.target.files[0];
-              if (imagem) {
-                const reader = new FileReader();
-                reader.onload = (event) => {
-                  const imgTemp = new Image();
-                  imgTemp.onload = () => {
-                    if (imgTemp.height > imgTemp.width) {
-                      toast.error(
-                        "Por favor, escolha uma foto na horizontal.",
-                        {
-                          theme: "colored",
-                          hideProgressBar: true,
-                          autoClose: 2000,
-                        },
-                      );
-                      input.value = "";
-                      return;
-                    }
-                    setFormCarro({ ...formCarro, foto: event.target.result });
-                  };
-                  imgTemp.src = event.target.result;
-                };
-                reader.readAsDataURL(imagem);
-              }
-            }}
-          />
-
-          {formCarro.foto && (
+          {formCarro.foto ? (
             <div
               style={{
                 position: "relative",
@@ -221,10 +187,46 @@ function PaginaAdicionarCarro() {
                 }}
               />
             </div>
+          ) : (
+            <BtnAddFoto
+              tipo="foto"
+              type="file"
+              accept="image/*"
+              label="Foto"
+              onClick={(e) => {
+                e.target.value = null;
+              }}
+              onChange={(e) => {
+                const imagem = e.target.files[0];
+                if (imagem) {
+                  const reader = new FileReader();
+                  reader.onload = (event) => {
+                    const imgTemp = new Image();
+                    imgTemp.onload = () => {
+                      if (imgTemp.height > imgTemp.width) {
+                        toast.error(
+                          "Por favor, escolha uma foto na horizontal.",
+                          {
+                            theme: "colored",
+                            hideProgressBar: true,
+                            autoClose: 2000,
+                          },
+                        );
+                        input.value = "";
+                        return;
+                      }
+                      setFormCarro({ ...formCarro, foto: event.target.result });
+                    };
+                    imgTemp.src = event.target.result;
+                  };
+                  reader.readAsDataURL(imagem);
+                }
+              }}
+            />
           )}
         </div>
 
-        <div className="PaginaAdicionarCarro_botao">
+        <div className="PaginaAdicionarCarro_btn_add">
           <BotaoCustomizado tipo="adicional" aoClicar={salvar}>
             Adicionar Carro
           </BotaoCustomizado>

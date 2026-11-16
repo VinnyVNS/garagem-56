@@ -37,6 +37,7 @@ function PaginaInfoCarro() {
     salvarLocalStorage("carros", carrosAtualizados);
 
     toast.success("Carro excluído com sucesso!", {
+      position: "top-center",
       theme: "colored",
       hideProgressBar: true,
       autoClose: 2000,
