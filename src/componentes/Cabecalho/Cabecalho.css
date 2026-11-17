@@ -1,20 +1,27 @@
 .Cabecalho_root {
-    display: flex;
-    align-items: center;
+    width: 100%;
+    height: 100%;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
-    gap: 5%;
-    padding: 8px 16px;
     background-color: var(--cor-primaria);
 }
 
-.Cabecalho_root h1 {
-    font-size: 36px;
-    color: var(--cor-secundaria);
+.Cabecalho_root > .conteudo {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 95%;
+    gap: 5%;
+    padding-left: 20px;
 }
 
-.Cabecalho_root img {
-    width: 60px;
-    height: 60px;
+.Cabecalho_root > .conteudo > .conteudo_img {
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
+}
+
+.Cabecalho_root > .conteudo > .conteudo_texto {
+    font-size: 32px;
+    color: var(--cor-secundaria);
 }

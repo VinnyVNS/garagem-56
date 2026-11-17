@@ -3,9 +3,8 @@
   --cor-secundaria: #FFD600;
   --cor-verde: #2E7D32;
   --cor-vermelha: #B00020;
-  --cor-preta: #212121;
-  --cor-branca: #FFFFFF;
-  --cor-cinza: #CBD5E1;
+  --cor-shadow: #00000033;
+  --cor-card: #c8c8c81a;
 }
 
 * {
@@ -23,7 +22,7 @@ html, body, #root {
 
 #root {
     display: grid;
-    grid-template-rows: 80px 1fr 80px;
+    grid-template-rows: 60px 1fr 60px;
 }
 
 a {

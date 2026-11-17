@@ -6,6 +6,6 @@
 
 .BotaoCustomizado_adicional {
     font-size: 24px;
-    color: var(--cor-branca);
+    color: white;
     background-color: var(--cor-primaria);
 }

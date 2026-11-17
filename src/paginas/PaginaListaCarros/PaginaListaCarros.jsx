@@ -4,6 +4,7 @@ import "./PaginaListaCarros.css";
 import { buscarCarros } from "../../servicos/carros.servico";
 import { useNavigate } from "react-router-dom";
 import { IoIosAdd } from "react-icons/io";
+import carroPlaceholder from "../../assets/carro-placeholder.jpg";
 
 function PaginaListaCarros() {
   const navigate = useNavigate();
@@ -22,14 +23,16 @@ function PaginaListaCarros() {
             <div
               onClick={() => irParaInfo(carro)}
               key={carro.id}
-              className="PaginaListaCarros_carro"
+              className="carro_card"
             >
-              <img src={carro.foto} />
+              <img src={carro.foto || carroPlaceholder} className="carro_img" />
 
-              <div className="infos">
-                <strong className="modelo">{carro.modelo}</strong>
-                <span>Marca: {carro.marca}</span>
-                <span>Placa: {carro.placa}</span>
+              <div className="carro_infos">
+                <strong className="carro_modelo">{carro.modelo}</strong>
+                <div className="carro_subinfos"><span>Marca: {carro.marca}</span>
+                  <span>Placa: {carro.placa}</span></div>
+                  
+                
               </div>
             </div>
           );

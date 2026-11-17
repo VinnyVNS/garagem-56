@@ -6,6 +6,7 @@ import { FaTrashAlt } from "react-icons/fa";
 import { salvarLocalStorage } from "../../servicos/localstorage.servico";
 import { buscarCarros } from "../../servicos/carros.servico";
 import { toast } from "react-toastify";
+import carroPlaceholder from "../../assets/carro-placeholder.jpg";
 
 function PaginaInfoCarro() {
   const location = useLocation();
@@ -80,7 +81,7 @@ function PaginaInfoCarro() {
     <Principal>
       <div className="PaginaInfoCarro_root">
         <div className="PaginaInfoCarro_carro">
-          <img src={carro.foto} className="carro_foto" />
+          <img src={carro.foto || carroPlaceholder} className="carro_foto" />
           <div className="modelo_icones">
             <strong className="modelo_carro">{carro.modelo}</strong>
             <div className="icones">

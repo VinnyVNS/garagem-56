@@ -1,6 +1,7 @@
 import { useLocation } from "react-router-dom";
 import BotaoVoltar from "../BotaoVoltar/BotaoVoltar";
 import "./Cabecalho.css";
+import garagem56logo from "../../assets/garagem-56-logo.png";
 
 function Cabecalho() {
   const location = useLocation();
@@ -11,12 +12,10 @@ function Cabecalho() {
   return (
     <>
       <header className="Cabecalho_root">
-        {paginasLogo ? (
-          <img src="\src\assets\garagem-56-logo.png" />
-        ) : (
-          <BotaoVoltar />
-        )}
-        <h1>Garagem 56</h1>
+        <div className="conteudo">
+          {paginasLogo ? <img src={garagem56logo} className="conteudo_img"/> : <BotaoVoltar />}
+          <h1 className="conteudo_texto">Garagem 56</h1>
+        </div>
       </header>
     </>
   );
