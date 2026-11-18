@@ -9,7 +9,7 @@ function Rodape() {
 
   const isCarrosAtivo =
     location.pathname.includes("lista-carros") ||
-    location.pathname.includes("adicionar-carro") ||
+    location.pathname.includes("cadastro-carro") ||
     location.pathname.includes("info-carro");
 
   const rolarParaOTopo = () => {

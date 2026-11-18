@@ -20,7 +20,7 @@ html, body, #root {
 
 #root {
     display: grid;
-    grid-template-rows: 70px 1fr 50px;
+    grid-template-rows: 80px 1fr 50px;
 }
 
 a {

@@ -1,12 +1,13 @@
 import { useState } from "react";
 import Principal from "../../componentes/Principal/Principal";
 import "./PaginaListaCarros.css";
-import { buscarCarros } from "../../servicos/carros.servico";
+import { buscarCarros, salvarCarro } from "../../servicos/carros.servico";
 import { useNavigate } from "react-router-dom";
 import { IoIosAdd } from "react-icons/io";
 import carroPlaceholder from "../../assets/carro-placeholder.jpg";
 import InputCustom from "../../componentes/InputCustom/InputCustom";
 import { CiSearch } from "react-icons/ci";
+import SelectCustom from "../../componentes/SelectCustom/SelectCustom";
 
 function PaginaListaCarros() {
   const navigate = useNavigate();
@@ -22,11 +23,20 @@ function PaginaListaCarros() {
     return item.modelo.toLowerCase().includes(carroPesquisa.toLowerCase());
   });
 
+  const alterarEstadoCarro = (idCarro, novoEstado) => {
+    const carroAtualizado = carros.map((item) => {
+      return item.id === idCarro ? { ...item, estado: novoEstado } : item;
+    });
+
+    setCarros(carroAtualizado);
+    salvarCarro(carroAtualizado.find((c) => c.id === idCarro));
+  };
+
   return (
     <Principal>
       <div className="PaginaListaCarros_root">
         <div className="carro_pesquisa">
-          <CiSearch className="lupa"/>
+          <CiSearch className="lupa" />
           <InputCustom
             type="search"
             value={carroPesquisa}
@@ -50,13 +60,20 @@ function PaginaListaCarros() {
                   <span>Marca: {carro.marca}</span>
                   <span>Placa: {carro.placa}</span>
                 </div>
+
+                <SelectCustom
+                  tipo={carro.estado}
+                  value={carro.estado || "emAndamento"}
+                  onClick={(e) => e.stopPropagation()}
+                  onChange={(e) => alterarEstadoCarro(carro.id, e.target.value)}
+                />
               </div>
             </div>
           );
         })}
 
         <div className="PaginaListaCarros_btnAddCarro">
-          <div className="click" onClick={() => navigate("/adicionar-carro")}>
+          <div className="click" onClick={() => navigate("/cadastro-carro")}>
             <span className="texto">Adicionar Carro</span>
             <IoIosAdd className="btn_redondo" />
           </div>

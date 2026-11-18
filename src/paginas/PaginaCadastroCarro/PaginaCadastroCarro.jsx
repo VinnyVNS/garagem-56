@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react";
 import BotaoCustomizado from "../../componentes/BotaoCustomizado/BotaoCustomizado";
-import CampoCustomizado from "../../componentes/CampoCustomizado/CampoCustomizado";
 import Principal from "../../componentes/Principal/Principal";
-import "./PaginaAdicionarCarro.css";
+import "./PaginaCadastroCarro.css";
 import { buscarCarros, salvarCarro } from "../../servicos/carros.servico";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import BtnAddFoto from "../../componentes/BtnAddFoto/BtnAddFoto";
 import InputCustom from "../../componentes/InputCustom/InputCustom";
 
-function PaginaAdicionarCarro() {
+function PaginaCadastroCarro() {
   const navigate = useNavigate();
 
   const [formCarro, setFormCarro] = useState({
@@ -19,6 +18,8 @@ function PaginaAdicionarCarro() {
     ano: "",
     cor: "",
     placa: "",
+    foto: "",
+    estado: "emAndamento",
   });
 
   const params = useParams();
@@ -87,8 +88,8 @@ function PaginaAdicionarCarro() {
 
   return (
     <Principal>
-      <div className="PaginaAdicionarCarro_root">
-        <div className="PaginaAdicionarCarro_campo">
+      <div className="PaginaCadastroCarro_root">
+        <div className="PaginaCadastroCarro_campo">
           <InputCustom
             type="input"
             label="Marca"
@@ -226,9 +227,9 @@ function PaginaAdicionarCarro() {
           )}
         </div>
 
-        <div className="PaginaAdicionarCarro_btn_add">
+        <div className="PaginaCadastroCarro_btn_add">
           <BotaoCustomizado tipo="adicional" aoClicar={salvar}>
-            Adicionar Carro
+            Salvar
           </BotaoCustomizado>
         </div>
       </div>
@@ -236,4 +237,4 @@ function PaginaAdicionarCarro() {
   );
 }
 
-export default PaginaAdicionarCarro;
+export default PaginaCadastroCarro;

@@ -27,7 +27,7 @@ function PaginaInfoCarro() {
   }
 
   const editarCarro = () => {
-    navigate(`/adicionar-carro/${carro.id}`);
+    navigate(`/cadastro-carro/${carro.id}`);
   };
 
   const confirmarExclusao = (closeToast) => {

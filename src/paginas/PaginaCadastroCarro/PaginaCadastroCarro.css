@@ -1,10 +1,10 @@
-.PaginaAdicionarCarro_root {
+.PaginaCadastroCarro_root {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-.PaginaAdicionarCarro_campo {
+.PaginaCadastroCarro_campo {
     display: flex;
     flex-direction: column;
     padding: 15px;
@@ -13,8 +13,4 @@
     border: 2px solid black;
     border-radius: 10px;
     background-color: var(--cor-card);
-}
-
-.PaginaAdicionarCarro_btn_add {
-    margin: 10px 40px;
 }

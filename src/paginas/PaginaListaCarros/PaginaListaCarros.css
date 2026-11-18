@@ -45,8 +45,9 @@
 .PaginaListaCarros_root > .carro_card > .carro_infos {
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   width: 40%;
-  padding-left: 5px;
+  padding: 5px;
   border-left: 1px solid black;
 }
 
