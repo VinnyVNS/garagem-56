@@ -5,6 +5,23 @@
   padding: 10px;
 }
 
+.PaginaListaCarros_root > .carro_pesquisa {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.PaginaListaCarros_root > .carro_pesquisa > .lupa {
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  padding-left: 10px;
+}
+
+.PaginaListaCarros_root > .carro_pesquisa input {
+  padding-left: 40px;
+}
+
 .PaginaListaCarros_root > .carro_card {
   display: flex;
   width: 100%;
@@ -56,7 +73,7 @@
   display: flex;
   align-items: center;
   position: fixed;
-  bottom: 80px;
+  bottom: 75px;
   gap: 5px;
   cursor: pointer;
   pointer-events: auto;

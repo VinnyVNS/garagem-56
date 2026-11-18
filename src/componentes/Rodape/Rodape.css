@@ -1,10 +1,11 @@
 .Rodape_root {
     display: flex;
+    align-items: center;
     justify-content: space-between;
     position: fixed;
     bottom: 0;
     width: 100%;
-    height: 60px;
+    height: 70px;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     padding: 5px 50px;
@@ -19,8 +20,8 @@
 }
 
 .Rodape_home_ativo .home_foto {
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
     filter: drop-shadow(0 0 5px black);
     color: var(--cor-secundaria);
     transition: 0.1s;
@@ -41,8 +42,8 @@
 }
 
 .Rodape_home_inativo .home_foto {
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
     color: white;
 }
 
@@ -60,8 +61,8 @@
 }
 
 .Rodape_carros_ativo .carros_foto {
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
     filter: drop-shadow(0 0 5px black);
     color: var(--cor-secundaria);
 }
@@ -81,8 +82,8 @@
 }
 
 .Rodape_carros_inativo .carros_foto {
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
     color: white;
 }
 
@@ -100,8 +101,8 @@
 }
 
 .Rodape_perfil .perfil_foto {
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
     color: white;
 }
 

@@ -1,6 +1,7 @@
 .InputCustom_root {
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 .InputCustom_root > .label {

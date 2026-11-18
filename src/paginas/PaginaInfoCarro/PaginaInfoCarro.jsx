@@ -80,18 +80,18 @@ function PaginaInfoCarro() {
   return (
     <Principal>
       <div className="PaginaInfoCarro_root">
-        <div className="PaginaInfoCarro_carro">
+        <div className="carro">
           <img src={carro.foto || carroPlaceholder} className="carro_foto" />
-          <div className="modelo_icones">
-            <strong className="modelo_carro">{carro.modelo}</strong>
-            <div className="icones">
+          <div className="carro_modelo_icones">
+            <strong className="carro_modelo">{carro.modelo}</strong>
+            <div className="carro_icones">
               <FaEdit className="editor" onClick={editarCarro} />
               <FaTrashAlt className="lixeira" onClick={excluirCarro} />
             </div>
           </div>
 
-          <div className="infos_carro">
-            <div className="textos_info">
+          <div className="carro_infos">
+            <div className="carro_infos_textos">
               <span className="texto">
                 <strong>Marca</strong>: {carro.marca}
               </span>
@@ -99,7 +99,7 @@ function PaginaInfoCarro() {
                 <strong>Placa</strong>: {carro.placa}
               </span>
             </div>
-            <div className="textos_info">
+            <div className="carro_infos_textos">
               <span className="texto">
                 <strong>Ano</strong>: {carro.ano}
               </span>

@@ -5,78 +5,77 @@
   padding: 0 15px;
 }
 
-.PaginaInfoCarro_carro {
+.PaginaInfoCarro_root > .carro {
   display: flex;
   flex-direction: column;
   width: 100%;
   max-width: 380px;
 }
 
-.PaginaInfoCarro_carro .carro_foto {
+.PaginaInfoCarro_root > .carro > .carro_foto {
   object-fit: cover;
   width: 100%;
   height: 200px;
-  border-right: 2px solid black;
-  border-left: 2px solid black;
-  border-bottom: 2px solid black;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
-.PaginaInfoCarro_carro .modelo_icones {
-  position: relative;
+.PaginaInfoCarro_root > .carro > .carro_modelo_icones {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 10px;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+}
+
+.PaginaInfoCarro_root > .carro > .carro_modelo_icones > .carro_modelo {
+  position: absolute;
+  font-size: 32px;
+}
+
+.PaginaInfoCarro_root > .carro > .carro_modelo_icones > .carro_icones {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  border-right: 2px solid black;
-  border-left: 2px solid black;
-  padding: 10px;
-  min-height: 45px;
+  width: 100%;
 }
 
-.PaginaInfoCarro_carro .modelo_carro {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 32px;
-  white-space: nowrap;
-}
-
-.PaginaInfoCarro_carro .icones {
-  display: flex;
-  gap: 8px;
-  z-index: 2;
-}
-
-.PaginaInfoCarro_carro .editor {
+.PaginaInfoCarro_root > .carro > .carro_modelo_icones > .carro_icones > .editor {
   color: var(--cor-primaria);
-  width: 28px;
-  height: 28px;
+  width: 25px;
+  height: 25px;
   cursor: pointer;
 }
 
-.PaginaInfoCarro_carro .lixeira {
+.PaginaInfoCarro_root > .carro > .carro_modelo_icones > .carro_icones > .lixeira {
   color: var(--cor-vermelha);
   width: 25px;
   height: 25px;
   cursor: pointer;
 }
 
-.PaginaInfoCarro_carro .infos_carro {
+.PaginaInfoCarro_root > .carro > .carro_infos {
   display: flex;
   justify-content: space-between;
-  padding: 0 20px 10px 20px;
-  border-right: 2px solid black;
-  border-left: 2px solid black;
-  border-bottom: 2px solid black;
+  padding: 0 20px 5px 20px;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
 
-.PaginaInfoCarro_carro .textos_info {
+.PaginaInfoCarro_root > .carro > .carro_infos > .carro_infos_textos {
   display: flex;
   flex-direction: column;
 }
 
-.PaginaInfoCarro_carro .texto {
+.PaginaInfoCarro_root > .carro > .carro_infos > .carro_infos_textos > .texto {
   font-size: 18px;
   padding: 5px;
 }
@@ -111,7 +110,7 @@
 }
 
 .toast_btn {
-  color: var(--cor-branca);
+  color: white;
   width: 50%;
   border: none;
   padding: 6px 12px;
@@ -124,5 +123,5 @@
 }
 
 .toast_btn_nao {
-  background: var(--cor-verde);
+  background: gray;
 }

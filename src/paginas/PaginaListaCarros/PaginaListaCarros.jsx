@@ -5,20 +5,37 @@ import { buscarCarros } from "../../servicos/carros.servico";
 import { useNavigate } from "react-router-dom";
 import { IoIosAdd } from "react-icons/io";
 import carroPlaceholder from "../../assets/carro-placeholder.jpg";
+import InputCustom from "../../componentes/InputCustom/InputCustom";
+import { CiSearch } from "react-icons/ci";
 
 function PaginaListaCarros() {
   const navigate = useNavigate();
 
   const [carros, setCarros] = useState(buscarCarros());
+  const [carroPesquisa, setCarroPesquisa] = useState("");
 
   const irParaInfo = (carro) => {
     navigate(`/info-carro/${carro.id}`, { state: { carro: carro } });
   };
 
+  const carroFiltrado = carros.filter((item) => {
+    return item.modelo.toLowerCase().includes(carroPesquisa.toLowerCase());
+  });
+
   return (
     <Principal>
       <div className="PaginaListaCarros_root">
-        {carros.map((carro) => {
+        <div className="carro_pesquisa">
+          <CiSearch className="lupa"/>
+          <InputCustom
+            type="search"
+            value={carroPesquisa}
+            placeholder="Buscar carro..."
+            onChange={(e) => setCarroPesquisa(e.target.value)}
+          />
+        </div>
+
+        {carroFiltrado.map((carro) => {
           return (
             <div
               onClick={() => irParaInfo(carro)}
@@ -29,10 +46,10 @@ function PaginaListaCarros() {
 
               <div className="carro_infos">
                 <strong className="carro_modelo">{carro.modelo}</strong>
-                <div className="carro_subinfos"><span>Marca: {carro.marca}</span>
-                  <span>Placa: {carro.placa}</span></div>
-                  
-                
+                <div className="carro_subinfos">
+                  <span>Marca: {carro.marca}</span>
+                  <span>Placa: {carro.placa}</span>
+                </div>
               </div>
             </div>
           );
@@ -40,8 +57,8 @@ function PaginaListaCarros() {
 
         <div className="PaginaListaCarros_btnAddCarro">
           <div className="click" onClick={() => navigate("/adicionar-carro")}>
-            <IoIosAdd className="btn_redondo" />
             <span className="texto">Adicionar Carro</span>
+            <IoIosAdd className="btn_redondo" />
           </div>
         </div>
       </div>
