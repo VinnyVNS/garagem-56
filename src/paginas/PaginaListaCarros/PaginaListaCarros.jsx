@@ -35,7 +35,7 @@ function PaginaListaCarros() {
   return (
     <Principal>
       <div className="PaginaListaCarros_root">
-        <div className="carro_pesquisa">
+        {carros.length > 0 && (<div className="carro_pesquisa">
           <CiSearch className="lupa" />
           <InputCustom
             type="search"
@@ -43,7 +43,7 @@ function PaginaListaCarros() {
             placeholder="Buscar carro..."
             onChange={(e) => setCarroPesquisa(e.target.value)}
           />
-        </div>
+        </div>)}
 
         {carroFiltrado.map((carro) => {
           return (
