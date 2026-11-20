@@ -1,16 +1,44 @@
 import "./BotaoCustomizado.css";
 
-function BotaoCustomizado(props) {
-  const classe = ["BotaoCustomizado_root"];
+function BotaoCustomizado({
+  tipo = "salvar",
+  aoClicar,
+  onClick,
+  type = "button",
+  disabled = false,
+  className = "",
+  children,
+  ...props
+}) {
+  const classes = ["BotaoCustomizado_root"];
 
-  if (props.tipo === "adicional") {
-    classe.push("BotaoCustomizado_adicional");
+  if (tipo === "salvar") {
+    classes.push("BotaoCustomizado_salvar");
+  } else if (tipo === "entrar") {
+    classes.push("BotaoCustomizado_entrar");
+  } else if (tipo === "cadastrar") {
+    classes.push("BotaoCustomizado_cadastrar");
   }
 
+  if (className) {
+    classes.push(className);
+  }
+
+  const lidarComClique = (evento) => {
+    if (aoClicar) aoClicar(evento);
+    if (onClick) onClick(evento);
+  };
+
   return (
-    <>
-      <button className={classe.join(" ")} onClick={props.aoClicar}>{props.children}</button>
-    </>
+    <button
+      type={type}
+      disabled={disabled}
+      className={classes.join(" ")}
+      onClick={lidarComClique}
+      {...props}
+    >
+      {children}
+    </button>
   );
 }
 

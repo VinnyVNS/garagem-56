@@ -1,6 +1,5 @@
 import "./Rodape.css";
-import { FaHome } from "react-icons/fa";
-import { FaCar } from "react-icons/fa";
+import { FaHome, FaCar } from "react-icons/fa";
 import { RxAvatar } from "react-icons/rx";
 import { NavLink, useLocation } from "react-router-dom";
 
@@ -17,36 +16,34 @@ function Rodape() {
   };
 
   return (
-    <>
-      <footer className="Rodape_root">
-        <NavLink
-          to={"/"}
-          onClick={rolarParaOTopo}
-          className={({ isActive }) =>
-            isActive ? "Rodape_home_ativo" : "Rodape_home_inativo"
-          }
-        >
-          <FaHome className="home_foto" />
-          <strong className="home_texto">Home</strong>
-        </NavLink>
+    <footer className="Rodape_root">
+      <NavLink
+        to="/"
+        end
+        onClick={rolarParaOTopo}
+        className={({ isActive }) =>
+          `Rodape_item ${isActive ? "ativo" : ""}`
+        }
+      >
+        <FaHome className="Rodape_icone" />
+        <span className="Rodape_texto">Home</span>
+      </NavLink>
 
-        <NavLink
-          to={"/lista-carros"}
-          onClick={rolarParaOTopo}
-          className={
-            isCarrosAtivo ? "Rodape_carros_ativo" : "Rodape_carros_inativo"
-          }
-        >
-          <FaCar className="carros_foto" />
-          <strong className="carros_texto">Carros</strong>
-        </NavLink>
+      <NavLink
+        to="/lista-carros"
+        onClick={rolarParaOTopo}
+        className={`Rodape_item ${isCarrosAtivo ? "ativo" : ""}`}
+      >
+        <FaCar className="Rodape_icone" />
+        <span className="Rodape_texto">Carros</span>
+      </NavLink>
 
-        <div className="Rodape_perfil">
-          <RxAvatar className="perfil_foto" />
-          <strong className="perfil_texto">Perfil</strong>
-        </div>
-      </footer>
-    </>
+      {/* Quando criar a PaginaPerfil, basta trocar esta div por um NavLink para "/perfil" */}
+      <div className="Rodape_item disabled" aria-disabled="true">
+        <RxAvatar className="Rodape_icone" />
+        <span className="Rodape_texto">Perfil</span>
+      </div>
+    </footer>
   );
 }
 

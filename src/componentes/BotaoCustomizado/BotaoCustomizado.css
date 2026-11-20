@@ -1,12 +1,76 @@
+/* ==========================================
+   BASE DO BOTÃO
+   ========================================== */
 .BotaoCustomizado_root {
-    border-radius: 15px;
-    height: 50px;
-    width: 100%;
-    margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 18px;
+  margin-bottom: 14px;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  border: 1.5px solid transparent;
+  border-radius: 12px;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    transform 0.15s ease,
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    opacity 0.15s ease;
 }
 
-.BotaoCustomizado_adicional {
-    font-size: 24px;
-    color: white;
-    background-color: var(--cor-primaria);
+.BotaoCustomizado_root:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.BotaoCustomizado_root:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* ==========================================
+   TIPO: SALVAR (AÇÃO PRINCIPAL DE FORMULÁRIO)
+   ========================================== */
+.BotaoCustomizado_root.BotaoCustomizado_salvar {
+  color: #ffffff;
+  background-color: var(--cor-primaria);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.16);
+}
+
+.BotaoCustomizado_root.BotaoCustomizado_salvar:hover:not(:disabled) {
+  filter: brightness(1.08);
+}
+
+/* ==========================================
+   TIPO: ENTRAR (DESTAQUE / LOGIN)
+   ========================================== */
+.BotaoCustomizado_root.BotaoCustomizado_entrar {
+  color: var(--cor-preta);
+  background-color: var(--cor-secundaria);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.14);
+}
+
+.BotaoCustomizado_root.BotaoCustomizado_entrar:hover:not(:disabled) {
+  filter: brightness(0.96);
+}
+
+/* ==========================================
+   TIPO: CADASTRAR (SECUNDÁRIO / OUTLINE)
+   ========================================== */
+.BotaoCustomizado_root.BotaoCustomizado_cadastrar {
+  color: var(--cor-primaria);
+  background-color: #ffffff;
+  border-color: var(--cor-primaria);
+}
+
+.BotaoCustomizado_root.BotaoCustomizado_cadastrar:hover:not(:disabled) {
+  background-color: rgba(15, 23, 42, 0.05);
 }

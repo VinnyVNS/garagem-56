@@ -10,14 +10,20 @@ function Cabecalho() {
     location.pathname === "/" || location.pathname === "/lista-carros";
 
   return (
-    <>
-      <header className="Cabecalho_root">
-        <div className="conteudo">
-          {paginasLogo ? <img src={garagem56logo} className="conteudo_img"/> : <BotaoVoltar />}
-          <h1 className="conteudo_texto">Garagem 56</h1>
-        </div>
-      </header>
-    </>
+    <header className="Cabecalho_root">
+      <div className="conteudo">
+        {paginasLogo ? (
+          <img
+            src={garagem56logo}
+            alt="Logo Garagem 56"
+            className="conteudo_img"
+          />
+        ) : (
+          <BotaoVoltar />
+        )}
+        <h1 className="conteudo_texto">Garagem 56</h1>
+      </div>
+    </header>
   );
 }
 

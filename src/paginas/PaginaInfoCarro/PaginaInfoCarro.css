@@ -1,127 +1,207 @@
+/* ==========================================
+   CONTAINER PRINCIPAL
+   ========================================== */
 .PaginaInfoCarro_root {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 15px;
+  gap: 18px;
+  width: 100%;
+  padding: 14px 14px 96px;
 }
 
+.PaginaInfoCarro_root > .carro_nao_encontrado {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 32px 16px;
+  font-size: 15px;
+  color: #64748b;
+}
+
+/* ==========================================
+   CARD PRINCIPAL DO CARRO
+   ========================================== */
 .PaginaInfoCarro_root > .carro {
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 380px;
+  max-width: 440px;
+  overflow: hidden;
+  background-color: var(--cor-card);
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  border-radius: 14px;
+  box-shadow: 0 4px 12px var(--cor-shadow);
 }
 
 .PaginaInfoCarro_root > .carro > .carro_foto {
-  object-fit: cover;
   width: 100%;
   height: 200px;
-  border-right: 1px solid black;
-  border-left: 1px solid black;
-  border-bottom: 1px solid black;
+  object-fit: cover;
 }
 
 .PaginaInfoCarro_root > .carro > .carro_modelo_icones {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  gap: 12px;
   width: 100%;
-  padding: 10px;
-  border-right: 1px solid black;
-  border-left: 1px solid black;
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
 }
 
 .PaginaInfoCarro_root > .carro > .carro_modelo_icones > .carro_modelo {
-  position: absolute;
-  font-size: 32px;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #0f172a;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .PaginaInfoCarro_root > .carro > .carro_modelo_icones > .carro_icones {
   display: flex;
-  justify-content: flex-end;
   align-items: center;
-  width: 100%;
+  gap: 8px;
+  flex-shrink: 0;
 }
 
-.PaginaInfoCarro_root > .carro > .carro_modelo_icones > .carro_icones > .editor {
+.PaginaInfoCarro_root > .carro > .carro_modelo_icones > .carro_icones > .btn_acao {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  background-color: rgba(15, 23, 42, 0.04);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.PaginaInfoCarro_root > .carro > .carro_modelo_icones > .carro_icones > .btn_acao:active {
+  transform: scale(0.94);
+}
+
+.PaginaInfoCarro_root > .carro > .carro_modelo_icones > .carro_icones > .btn_acao.editar:hover {
+  background-color: rgba(15, 23, 42, 0.09);
+}
+
+.PaginaInfoCarro_root > .carro > .carro_modelo_icones > .carro_icones > .btn_acao.excluir:hover {
+  background-color: rgba(220, 38, 38, 0.1);
+}
+
+.PaginaInfoCarro_root > .carro > .carro_modelo_icones > .carro_icones > .btn_acao > .editor {
+  width: 18px;
+  height: 18px;
   color: var(--cor-primaria);
-  width: 25px;
-  height: 25px;
-  cursor: pointer;
 }
 
-.PaginaInfoCarro_root > .carro > .carro_modelo_icones > .carro_icones > .lixeira {
+.PaginaInfoCarro_root > .carro > .carro_modelo_icones > .carro_icones > .btn_acao > .lixeira {
+  width: 18px;
+  height: 18px;
   color: var(--cor-vermelha);
-  width: 25px;
-  height: 25px;
-  cursor: pointer;
 }
 
+/* ==========================================
+   INFORMAÇÕES DO VEÍCULO
+   ========================================== */
 .PaginaInfoCarro_root > .carro > .carro_infos {
   display: flex;
   justify-content: space-between;
-  padding: 0 20px 5px 20px;
-  border-right: 1px solid black;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
-  border-left: 1px solid black;
-  border-bottom: 1px solid black;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  gap: 12px;
+  padding: 12px 14px;
 }
 
 .PaginaInfoCarro_root > .carro > .carro_infos > .carro_infos_textos {
   display: flex;
   flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
 }
 
 .PaginaInfoCarro_root > .carro > .carro_infos > .carro_infos_textos > .texto {
-  font-size: 18px;
-  padding: 5px;
+  overflow: hidden;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #334155;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.PaginaInfoCarro_servicos {
+/* ==========================================
+   SEÇÃO DE SERVIÇOS
+   ========================================== */
+.PaginaInfoCarro_root > .PaginaInfoCarro_servicos {
   display: flex;
   flex-direction: column;
+  gap: 12px;
   width: 100%;
-  margin-top: 20px;
+  max-width: 440px;
+  padding: 14px;
+  background-color: var(--cor-card);
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  border-radius: 14px;
+  box-shadow: 0 4px 12px var(--cor-shadow);
 }
 
-.PaginaInfoCarro_servicos .servicos_titulo {
+.PaginaInfoCarro_root > .PaginaInfoCarro_servicos > .servicos_titulo {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.PaginaInfoCarro_root > .PaginaInfoCarro_servicos > .servicos_vazia {
+  padding: 18px 12px;
+  font-size: 14px;
+  color: #64748b;
+  text-align: center;
+  background-color: rgba(15, 23, 42, 0.03);
+  border-radius: 10px;
+}
+
+/* ==========================================
+   TOAST DE CONFIRMAÇÃO DE EXCLUSÃO
+   ========================================== */
+.toast_exclusao_container {
   display: flex;
-  justify-content: center;
-  font-size: 36px;
+  flex-direction: column;
 }
 
-.PaginaInfoCarro_servicos .servicos_vazia {
+.toast_exclusao_container > .toast_exclusao_texto {
+  margin: 0 0 10px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.toast_exclusao_container > .toast_exclusao_botoes {
   display: flex;
-  justify-content: center;
-  margin-top: 20%;
+  gap: 10px;
 }
 
-.toast_exclusao_texto {
-  margin: 0 0 10px 0;
-  font-weight: bold;
-}
-
-.toast_exclusao_botoes {
-  display: flex;
-  gap: 20px;
-}
-
-.toast_btn {
-  color: white;
-  width: 50%;
+.toast_exclusao_container > .toast_exclusao_botoes > .toast_btn {
+  flex: 1;
+  padding: 7px 12px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  color: #ffffff;
   border: none;
-  padding: 6px 12px;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
 }
 
-.toast_btn_sim {
-  background: var(--cor-vermelha);
+.toast_exclusao_container > .toast_exclusao_botoes > .toast_btn.toast_btn_sim {
+  background-color: var(--cor-vermelha);
 }
 
-.toast_btn_nao {
-  background: gray;
+.toast_exclusao_container > .toast_exclusao_botoes > .toast_btn.toast_btn_nao {
+  background-color: #64748b;
 }

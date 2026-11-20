@@ -1,103 +1,167 @@
+/* ==========================================
+   CONTAINER PRINCIPAL
+   ========================================== */
 .PaginaListaCarros_root {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding: 10px;
+  gap: 12px;
+  padding: 14px 14px 112px;
 }
 
+/* ==========================================
+   BARRA DE PESQUISA
+   ========================================== */
 .PaginaListaCarros_root > .carro_pesquisa {
+  position: relative;
   display: flex;
   align-items: center;
   width: 100%;
 }
 
 .PaginaListaCarros_root > .carro_pesquisa > .lupa {
-  width: 35px;
-  height: 35px;
   position: absolute;
-  padding-left: 10px;
+  left: 12px;
+  z-index: 2;
+  width: 22px;
+  height: 22px;
+  color: #64748b;
+  pointer-events: none;
 }
 
-.PaginaListaCarros_root > .carro_pesquisa input {
-  padding-left: 40px;
+.PaginaListaCarros_root > .carro_pesquisa > input,
+.PaginaListaCarros_root > .carro_pesquisa > * > input {
+  width: 100%;
+  padding-left: 42px;
 }
 
+/* ==========================================
+   CARD DO CARRO
+   ========================================== */
 .PaginaListaCarros_root > .carro_card {
   display: flex;
+  align-items: stretch;
   width: 100%;
-  height: 130px;
-  border: 1px solid black;
-  box-shadow: 0 3px 5px var(--cor-shadow);
-  border-radius: 10px;
+  min-height: 132px;
   background-color: var(--cor-card);
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  border-radius: 14px;
+  box-shadow: 0 4px 12px var(--cor-shadow);
   cursor: pointer;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
 }
 
 .PaginaListaCarros_root > .carro_card > .carro_img {
+  flex-shrink: 0;
+  align-self: stretch;
+  width: 42%;
+  height: auto;
+  min-height: 132px;
   object-fit: cover;
-  padding: 2px;
-  height: 100%;
-  width: 60%;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+  border-top-left-radius: 14px;
+  border-bottom-left-radius: 14px;
 }
 
 .PaginaListaCarros_root > .carro_card > .carro_infos {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  width: 40%;
-  padding: 5px;
-  border-left: 1px solid black;
+  justify-content: space-between;
+  gap: 8px;
+  width: 58%;
+  min-width: 0;
+  padding: 10px 12px;
+  border-left: 1px solid rgba(15, 23, 42, 0.08);
 }
 
 .PaginaListaCarros_root > .carro_card > .carro_infos > .carro_modelo {
-  font-size: 24px;
+  overflow: hidden;
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .PaginaListaCarros_root > .carro_card > .carro_infos > .carro_subinfos {
   display: flex;
   flex-direction: column;
-  font-size: 16px;
+  gap: 2px;
+  font-size: 13px;
+  color: #475569;
 }
 
-.PaginaListaCarros_btnAddCarro {
+.PaginaListaCarros_root > .carro_card > .carro_infos > .carro_subinfos > span {
+  overflow: hidden;
+  line-height: 1.35;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ==========================================
+   BOTÃO FLUTUANTE (ADICIONAR CARRO)
+   ========================================== */
+.PaginaListaCarros_root > .PaginaListaCarros_btnAddCarro {
   display: flex;
   justify-content: flex-end;
-  align-items: center;
-  height: 80px;
-  padding-right: 10px;
   pointer-events: none;
 }
 
-.PaginaListaCarros_btnAddCarro > .click {
+.PaginaListaCarros_root > .PaginaListaCarros_btnAddCarro > .click {
+  position: fixed;
+  right: 16px;
+  bottom: 86px;
+  z-index: 30;
   display: flex;
   align-items: center;
-  position: fixed;
-  bottom: 75px;
-  gap: 5px;
+  gap: 8px;
+  padding: 0;
+  font-family: inherit;
+  background: transparent;
+  border: none;
   cursor: pointer;
   pointer-events: auto;
 }
 
-.PaginaListaCarros_btnAddCarro > .click > .texto {
-  padding: 3px 5px;
-  border-radius: 10px;
-  background-color: var(--cor-primaria);
+.PaginaListaCarros_root > .PaginaListaCarros_btnAddCarro > .click > .texto {
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 600;
   color: var(--cor-secundaria);
+  background-color: var(--cor-primaria);
+  border-radius: 999px;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.16);
 }
 
-.PaginaListaCarros_btnAddCarro > .click > .btn_redondo {
-  border-radius: 50%;
-  width: 70px;
-  height: 70px;
-  font-size: 24px;
-  background-color: var(--cor-secundaria);
+.PaginaListaCarros_root > .PaginaListaCarros_btnAddCarro > .click > .btn_redondo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
   color: var(--cor-preta);
+  background-color: var(--cor-secundaria);
+  border-radius: 50%;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.22);
+  transition: transform 0.15s ease;
 }
 
-.PaginaListaCarros_vazia {
+.PaginaListaCarros_root > .PaginaListaCarros_btnAddCarro > .click > .btn_redondo > .icone_add {
+  width: 28px;
+  height: 28px;
+}
+
+.PaginaListaCarros_root > .PaginaListaCarros_btnAddCarro > .click:active > .btn_redondo {
+  transform: scale(0.94);
+}
+
+/* ==========================================
+   ESTADO VAZIO / SEM RESULTADOS
+   ========================================== */
+.PaginaListaCarros_root > .PaginaListaCarros_vazia {
   display: flex;
   justify-content: center;
-  margin-top: 20%;
+  margin-top: 24%;
+  padding: 0 20px;
+  font-size: 15px;
+  color: #64748b;
+  text-align: center;
 }

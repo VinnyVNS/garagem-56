@@ -1,15 +1,19 @@
 import { useEffect, useState } from "react";
-import BotaoCustomizado from "../../componentes/BotaoCustomizado/BotaoCustomizado";
-import Principal from "../../componentes/Principal/Principal";
-import "./PaginaCadastroCarro.css";
-import { buscarCarros, salvarCarro } from "../../servicos/carros.servico";
 import { useNavigate, useParams } from "react-router-dom";
+import { IoClose } from "react-icons/io5";
 import { toast } from "react-toastify";
-import BtnAddFoto from "../../componentes/BtnAddFoto/BtnAddFoto";
+import Principal from "../../componentes/Principal/Principal";
 import InputCustom from "../../componentes/InputCustom/InputCustom";
+import BtnAddFoto from "../../componentes/BtnAddFoto/BtnAddFoto";
+import BotaoCustomizado from "../../componentes/BotaoCustomizado/BotaoCustomizado";
+import { buscarCarros, salvarCarro } from "../../servicos/carros.servico";
+import "./PaginaCadastroCarro.css";
+import { formatarPlacaEstrita } from "../../utils/formatarPlacaEstrita";
 
 function PaginaCadastroCarro() {
   const navigate = useNavigate();
+  const { id } = useParams();
+  const emEdicao = Boolean(id);
 
   const [formCarro, setFormCarro] = useState({
     id: "",
@@ -22,77 +26,114 @@ function PaginaCadastroCarro() {
     estado: "emAndamento",
   });
 
-  const params = useParams();
-
   useEffect(() => {
-    if (params.id) {
-      const carroParaEditar = buscarCarros().find(
-        (item) => item.id === +params.id,
-      );
+    if (!id) return;
 
-      if (carroParaEditar) {
-        setFormCarro(carroParaEditar);
-      }
-    }
-  }, [params.id]);
+    const carrosSalvos = buscarCarros() || [];
+    const carroParaEditar = carrosSalvos.find(
+      (item) => String(item.id) === String(id),
+    );
 
-  const salvar = () => {
-    if (!formCarro.marca.trim()) {
-      toast.error("O campo marca é obrigatório!", {
-        position: "top-center",
-        theme: "colored",
-        hideProgressBar: true,
-        autoClose: 2000,
+    if (carroParaEditar) {
+      setFormCarro({
+        ...carroParaEditar,
+        ano: carroParaEditar.ano ? String(carroParaEditar.ano) : "",
       });
-      return;
     }
+  }, [id]);
 
-    if (!formCarro.modelo.trim()) {
-      toast.error("O campo modelo é obrigatório!", {
-        theme: "colored",
-        hideProgressBar: true,
-        autoClose: 2000,
-      });
-      return;
-    }
-
-    if (!formCarro.ano.trim()) {
-      toast.error("O campo ano é obrigatório!", {
-        theme: "colored",
-        hideProgressBar: true,
-        autoClose: 2000,
-      });
-      return;
-    }
-
-    if (!formCarro.cor.trim()) {
-      toast.error("O campo cor é obrigatório!", {
-        theme: "colored",
-        hideProgressBar: true,
-        autoClose: 2000,
-      });
-      return;
-    }
-
-    salvarCarro(formCarro);
-    toast.success("Carro adicionado com sucesso!", {
+  const exibirErro = (mensagem) => {
+    toast.error(mensagem, {
+      position: "top-center",
       theme: "colored",
       hideProgressBar: true,
       autoClose: 2000,
     });
+  };
 
-    navigate("/lista-carros");
+  const salvar = (evento) => {
+    if (evento) evento.preventDefault();
 
-    console.log(formCarro);
+    if (!formCarro.marca.trim()) {
+      exibirErro("Por favor, digite a marca do carro!");
+      return;
+    }
+
+    if (!formCarro.modelo.trim()) {
+      exibirErro("Por favor, digite o modelo do carro!");
+      return;
+    }
+
+    try {
+      salvarCarro({
+        ...formCarro,
+        marca: formCarro.marca.trim(),
+        modelo: formCarro.modelo.trim(),
+        ano: String(formCarro.ano).trim(),
+        cor: formCarro.cor.trim(),
+        placa: formCarro.placa.trim().toUpperCase(),
+      });
+
+      toast.success(
+        emEdicao
+          ? "Carro atualizado com sucesso!"
+          : "Carro adicionado com sucesso!",
+        {
+          position: "top-center",
+          theme: "colored",
+          hideProgressBar: true,
+          autoClose: 2000,
+        },
+      );
+
+      navigate("/lista-carros");
+    } catch {
+      exibirErro("Espaço cheio no navegador. Tente uma foto menor.");
+    }
+  };
+
+  const lidarComUploadFoto = (evento) => {
+    const imagem = evento.target.files?.[0];
+    if (!imagem) return;
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const imgTemp = new Image();
+      imgTemp.onload = () => {
+        if (imgTemp.height > imgTemp.width) {
+          exibirErro("Por favor, escolha uma foto na horizontal.");
+          return;
+        }
+
+        // Redimensiona e comprime para não estourar o limite de 5MB do localStorage
+        const larguraMax = 800;
+        const escala = Math.min(1, larguraMax / imgTemp.width);
+        const canvas = document.createElement("canvas");
+        canvas.width = Math.round(imgTemp.width * escala);
+        canvas.height = Math.round(imgTemp.height * escala);
+
+        const ctx = canvas.getContext("2d");
+        ctx.drawImage(imgTemp, 0, 0, canvas.width, canvas.height);
+
+        const fotoComprimida = canvas.toDataURL("image/jpeg", 0.75);
+
+        setFormCarro((anterior) => ({
+          ...anterior,
+          foto: fotoComprimida,
+        }));
+      };
+      imgTemp.src = event.target.result;
+    };
+    reader.readAsDataURL(imagem);
   };
 
   return (
     <Principal>
-      <div className="PaginaCadastroCarro_root">
+      <form className="PaginaCadastroCarro_root" onSubmit={salvar} noValidate>
         <div className="PaginaCadastroCarro_campo">
           <InputCustom
-            type="input"
-            label="Marca"
+            type="text"
+            label="Marca *"
             maxLength={20}
             placeholder="Digite a marca do carro..."
             value={formCarro.marca}
@@ -100,9 +141,10 @@ function PaginaCadastroCarro() {
               setFormCarro({ ...formCarro, marca: e.target.value })
             }
           />
+
           <InputCustom
-            tipo="input"
-            label="Modelo"
+            type="text"
+            label="Modelo *"
             maxLength={20}
             placeholder="Digite o modelo do carro..."
             value={formCarro.modelo}
@@ -111,81 +153,63 @@ function PaginaCadastroCarro() {
             }
           />
 
-          <InputCustom
-            tipo="input"
-            label="Ano"
-            maxLength={4}
-            placeholder="Digite o ano do carro..."
-            value={formCarro.ano}
-            onChange={(e) =>
-              setFormCarro({ ...formCarro, ano: e.target.value })
-            }
-          />
+          <div className="linha_dupla">
+            <InputCustom
+              type="text"
+              inputMode="numeric"
+              label="Ano"
+              maxLength={4}
+              placeholder="Ex: 2024"
+              value={formCarro.ano}
+              onChange={(e) =>
+                setFormCarro({
+                  ...formCarro,
+                  ano: e.target.value.replace(/\D/g, ""),
+                })
+              }
+            />
+
+            <InputCustom
+              type="text"
+              label="Cor"
+              maxLength={15}
+              placeholder="Ex: Preto"
+              value={formCarro.cor}
+              onChange={(e) =>
+                setFormCarro({ ...formCarro, cor: e.target.value })
+              }
+            />
+          </div>
 
           <InputCustom
-            tipo="input"
-            label="Cor"
-            maxLength={10}
-            placeholder="Digite a cor do carro..."
-            value={formCarro.cor}
-            onChange={(e) =>
-              setFormCarro({ ...formCarro, cor: e.target.value })
-            }
-          />
-
-          <InputCustom
-            tipo="input"
+            type="text"
             label="Placa"
             maxLength={8}
-            placeholder="Digite a placa do carro..."
+            placeholder="Ex: ABC-1234"
             value={formCarro.placa}
             onChange={(e) =>
-              setFormCarro({ ...formCarro, placa: e.target.value })
+              setFormCarro({
+                ...formCarro,
+                placa: formatarPlacaEstrita(e.target.value),
+              })
             }
           />
 
           {formCarro.foto ? (
-            <div
-              style={{
-                position: "relative",
-                display: "inline-block",
-                width: "100%",
-              }}
-            >
+            <div className="foto_preview_container">
               <button
                 type="button"
+                className="btn_remover_foto"
+                aria-label="Remover foto"
                 onClick={() => setFormCarro({ ...formCarro, foto: "" })}
-                style={{
-                  position: "absolute",
-                  top: "20px",
-                  right: "20px",
-                  backgroundColor: "rgba(231, 76, 60, 0.9)",
-                  color: "white",
-                  border: "none",
-                  borderRadius: "50%",
-                  width: "30px",
-                  height: "30px",
-                  fontWeight: "bold",
-                  cursor: "pointer",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  boxShadow: "0 2px 5px rgba(0,0,0,0.3)",
-                }}
               >
-                X
+                <IoClose className="icone_fechar" aria-hidden="true" />
               </button>
 
               <img
                 src={formCarro.foto}
-                alt="Foto do Carro"
-                style={{
-                  width: "100%",
-                  height: "50%",
-                  objectFit: "cover",
-                  borderRadius: "20px",
-                  padding: "10px",
-                }}
+                alt="Foto do carro"
+                className="foto_preview"
               />
             </div>
           ) : (
@@ -197,42 +221,17 @@ function PaginaCadastroCarro() {
               onClick={(e) => {
                 e.target.value = null;
               }}
-              onChange={(e) => {
-                const imagem = e.target.files[0];
-                if (imagem) {
-                  const reader = new FileReader();
-                  reader.onload = (event) => {
-                    const imgTemp = new Image();
-                    imgTemp.onload = () => {
-                      if (imgTemp.height > imgTemp.width) {
-                        toast.error(
-                          "Por favor, escolha uma foto na horizontal.",
-                          {
-                            theme: "colored",
-                            hideProgressBar: true,
-                            autoClose: 2000,
-                          },
-                        );
-                        input.value = "";
-                        return;
-                      }
-                      setFormCarro({ ...formCarro, foto: event.target.result });
-                    };
-                    imgTemp.src = event.target.result;
-                  };
-                  reader.readAsDataURL(imagem);
-                }
-              }}
+              onChange={lidarComUploadFoto}
             />
           )}
         </div>
 
         <div className="PaginaCadastroCarro_btn_add">
-          <BotaoCustomizado tipo="adicional" aoClicar={salvar}>
-            Salvar
+          <BotaoCustomizado type="submit" tipo="salvar">
+            {emEdicao ? "Salvar Alterações" : "Salvar Carro"}
           </BotaoCustomizado>
         </div>
-      </div>
+      </form>
     </Principal>
   );
 }

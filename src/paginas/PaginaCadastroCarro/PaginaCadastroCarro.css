@@ -1,16 +1,113 @@
+/* ==========================================
+   CONTAINER PRINCIPAL
+   ========================================== */
 .PaginaCadastroCarro_root {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 14px 14px 96px;
 }
 
-.PaginaCadastroCarro_campo {
-    display: flex;
-    flex-direction: column;
-    padding: 15px;
-    margin: 10px 40px;
-    gap: 5px;
-    border: 2px solid black;
-    border-radius: 10px;
-    background-color: var(--cor-card);
+/* ==========================================
+   CARD DO FORMULÁRIO
+   ========================================== */
+.PaginaCadastroCarro_root > .PaginaCadastroCarro_campo {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 440px;
+  padding: 16px;
+  background-color: var(--cor-card);
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  border-radius: 14px;
+  box-shadow: 0 4px 12px var(--cor-shadow);
+}
+
+.PaginaCadastroCarro_root > .PaginaCadastroCarro_campo > .linha_dupla {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.PaginaCadastroCarro_root
+  > .PaginaCadastroCarro_campo
+  > .linha_dupla
+  > .InputCustom_root {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ==========================================
+   PREVIEW DA FOTO E BOTÃO DE REMOVER
+   ========================================== */
+.PaginaCadastroCarro_root
+  > .PaginaCadastroCarro_campo
+  > .foto_preview_container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  border-radius: 12px;
+}
+
+.PaginaCadastroCarro_root
+  > .PaginaCadastroCarro_campo
+  > .foto_preview_container
+  > .btn_remover_foto {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  color: #ffffff;
+  background-color: rgba(220, 38, 38, 0.92);
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.25);
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.PaginaCadastroCarro_root
+  > .PaginaCadastroCarro_campo
+  > .foto_preview_container
+  > .btn_remover_foto:active {
+  transform: scale(0.92);
+}
+
+.PaginaCadastroCarro_root
+  > .PaginaCadastroCarro_campo
+  > .foto_preview_container
+  > .btn_remover_foto
+  > .icone_fechar {
+  width: 18px;
+  height: 18px;
+}
+
+.PaginaCadastroCarro_root
+  > .PaginaCadastroCarro_campo
+  > .foto_preview_container
+  > .foto_preview {
+  display: block;
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+}
+
+/* ==========================================
+   ÁREA DO BOTÃO SALVAR
+   ========================================== */
+.PaginaCadastroCarro_root > .PaginaCadastroCarro_btn_add {
+  width: 100%;
+  max-width: 440px;
 }

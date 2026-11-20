@@ -1,47 +1,201 @@
+/* ==========================================
+   CONTAINER PRINCIPAL (PILL TOUCH)
+   ========================================== */
 .SelectCustom_root {
-    width: 100%;
-    height: 20%;
-    border-radius: 20px;
+  position: relative;
+  width: 100%;
+  min-height: 36px;
+  border-radius: 999px;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.pronto {
-    background-color: green;
-    color: white;
-    padding-left: 10px;
-    font-size: 14px;
+.SelectCustom_root:active {
+  transform: scale(0.98);
 }
 
-.emAndamento {
-    background-color: yellow;
-    color: black;
-    padding-left: 10px;
-    font-size: 14px;
+.SelectCustom_root.aberto {
+  z-index: 40;
 }
 
-.foraDeServico {
-    background-color: gray;
-    color: white;
-    padding-left: 10px;
-    font-size: 14px;
+/* ==========================================
+   GATILHO (ESTADO ATUAL DO SELECT)
+   ========================================== */
+.SelectCustom_root > .SelectCustom_gatilho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  height: 100%;
+  min-height: 36px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
 }
 
-.prontoDentro {
-    background-color: green;
-    color: white;
-    padding-left: 10px;
-    font-size: 14px;
+.SelectCustom_root > .SelectCustom_gatilho > .SelectCustom_ponto {
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
 }
 
-.emAndamentoDentro {
-    background-color: yellow;
-    color: black;
-    padding-left: 10px;
-    font-size: 14px;
+.SelectCustom_root > .SelectCustom_gatilho > .SelectCustom_label {
+  flex: 1;
+  overflow: hidden;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.foraDeServicoDentro {
-    background-color: gray;
-    color: white;
-    padding-left: 10px;
-    font-size: 14px;
+.SelectCustom_root > .SelectCustom_gatilho > .SelectCustom_seta {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s ease;
+}
+
+.SelectCustom_root > .SelectCustom_gatilho > .SelectCustom_seta.girada {
+  transform: rotate(180deg);
+}
+
+/* ==========================================
+   MENU SUSPENSO DE OPÇÕES
+   ========================================== */
+.SelectCustom_root > .SelectCustom_menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 6px;
+  background-color: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  border-radius: 16px;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.16);
+}
+
+.SelectCustom_root > .SelectCustom_menu > .SelectCustom_item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 36px;
+  padding: 6px 10px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: left;
+  border: none;
+  border-radius: 11px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, filter 0.15s ease;
+}
+
+.SelectCustom_root > .SelectCustom_menu > .SelectCustom_item > .SelectCustom_item_esq {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.SelectCustom_root > .SelectCustom_menu > .SelectCustom_item > .SelectCustom_item_esq > .SelectCustom_ponto {
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.SelectCustom_root > .SelectCustom_menu > .SelectCustom_item > .SelectCustom_check {
+  flex-shrink: 0;
+  width: 15px;
+  height: 15px;
+}
+
+/* ==========================================
+   CORES — PRONTO
+   ========================================== */
+.SelectCustom_root.pronto > .SelectCustom_gatilho {
+  color: #ffffff;
+  background-color: #16a34a;
+  border: 1px solid #15803d;
+}
+
+.SelectCustom_root.pronto > .SelectCustom_gatilho > .SelectCustom_ponto {
+  background-color: #ffffff;
+}
+
+.SelectCustom_root > .SelectCustom_menu > .SelectCustom_item.pronto {
+  color: #14532d;
+  background-color: #dcfce7;
+}
+
+.SelectCustom_root > .SelectCustom_menu > .SelectCustom_item.pronto:hover,
+.SelectCustom_root > .SelectCustom_menu > .SelectCustom_item.pronto.selecionada {
+  background-color: #bbf7d0;
+}
+
+.SelectCustom_root > .SelectCustom_menu > .SelectCustom_item.pronto > .SelectCustom_item_esq > .SelectCustom_ponto {
+  background-color: #16a34a;
+}
+
+/* ==========================================
+   CORES — EM ANDAMENTO
+   ========================================== */
+.SelectCustom_root.emAndamento > .SelectCustom_gatilho {
+  color: #713f12;
+  background-color: #fef08a;
+  border: 1px solid #facc15;
+}
+
+.SelectCustom_root.emAndamento > .SelectCustom_gatilho > .SelectCustom_ponto {
+  background-color: #ca8a04;
+}
+
+.SelectCustom_root > .SelectCustom_menu > .SelectCustom_item.emAndamento {
+  color: #713f12;
+  background-color: #fef9c3;
+}
+
+.SelectCustom_root > .SelectCustom_menu > .SelectCustom_item.emAndamento:hover,
+.SelectCustom_root > .SelectCustom_menu > .SelectCustom_item.emAndamento.selecionada {
+  background-color: #fef08a;
+}
+
+.SelectCustom_root > .SelectCustom_menu > .SelectCustom_item.emAndamento > .SelectCustom_item_esq > .SelectCustom_ponto {
+  background-color: #ca8a04;
+}
+
+/* ==========================================
+   CORES — FORA DE SERVIÇO
+   ========================================== */
+.SelectCustom_root.foraDeServico > .SelectCustom_gatilho {
+  color: #ffffff;
+  background-color: #64748b;
+  border: 1px solid #475569;
+}
+
+.SelectCustom_root.foraDeServico > .SelectCustom_gatilho > .SelectCustom_ponto {
+  background-color: #ffffff;
+}
+
+.SelectCustom_root > .SelectCustom_menu > .SelectCustom_item.foraDeServico {
+  color: #334155;
+  background-color: #e2e8f0;
+}
+
+.SelectCustom_root > .SelectCustom_menu > .SelectCustom_item.foraDeServico:hover,
+.SelectCustom_root > .SelectCustom_menu > .SelectCustom_item.foraDeServico.selecionada {
+  background-color: #cbd5e1;
+}
+
+.SelectCustom_root > .SelectCustom_menu > .SelectCustom_item.foraDeServico > .SelectCustom_item_esq > .SelectCustom_ponto {
+  background-color: #64748b;
 }
