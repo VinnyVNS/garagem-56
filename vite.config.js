@@ -7,6 +7,9 @@ export default defineConfig({
    react(),
    VitePWA({
      registerType: 'autoUpdate',
+     devOptions: {
+        enabled: true,
+      },
      includeAssets: [
        'favicon.svg',
        'favicon.ico',
@@ -17,8 +20,8 @@ export default defineConfig({
        name: 'Garagem 56',
        short_name: 'Garagem 56',
        description: 'Aplicativo de aulas utilizando ReactJS e PWA',
-       theme_color: '#3f50b5',
-       background_color: '#f7f7f7',
+       theme_color: '#1A237E',
+       background_color: '#1A237E',
        display: 'standalone',
        icons: [
          {

@@ -1,0 +1,39 @@
+.PaginaCadastroUsuario_root {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  background-color: var(--cor-primaria);
+}
+
+.PaginaCadastroUsuario_root > .logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 10%;
+}
+
+.PaginaCadastroUsuario_root > .logo > .logo_img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.PaginaCadastroUsuario_root > .logo > .logo_texto {
+  color: var(--cor-secundaria);
+}
+
+.PaginaCadastroUsuario_root > .campos {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 440px;
+  padding: 16px;
+  margin: 20px 0 20px 0;
+  background-color: var(--cor-primaria);
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  border-radius: 14px;
+  box-shadow: 0 4px 12px var(--cor-shadow);
+}

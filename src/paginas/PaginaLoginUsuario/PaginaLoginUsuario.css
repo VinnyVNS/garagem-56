@@ -1,0 +1,23 @@
+.PaginaLoginUsuario_root {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--cor-primaria);
+}
+
+.PaginaLoginUsuario_root > .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 10%;
+}
+
+.PaginaLoginUsuario_root > .logo > .logo_img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.PaginaLoginUsuario_root > .logo > .logo_texto {
+    color: var(--cor-secundaria);
+}

@@ -32,7 +32,7 @@ function PaginaListaCarros() {
 
   const alterarEstadoCarro = (idCarro, novoEstado) => {
     const listaAtualizada = carros.map((item) =>
-      item.id === idCarro ? { ...item, estado: novoEstado } : item
+      item.id === idCarro ? { ...item, estado: novoEstado } : item,
     );
 
     setCarros(listaAtualizada);
@@ -77,8 +77,12 @@ function PaginaListaCarros() {
                 <strong className="carro_modelo">{carro.modelo}</strong>
 
                 <div className="carro_subinfos">
-                  <span>Marca: {carro.marca}</span>
-                  <span>Placa: {carro.placa || "Não informado"}</span>
+                  <span>
+                    <strong>Marca</strong>: {carro.marca}
+                  </span>
+                  <span>
+                    <strong>Placa</strong>: {carro.placa || "Não informado"}
+                  </span>
                 </div>
 
                 <SelectCustom

@@ -113,16 +113,15 @@
    ========================================== */
 .PaginaInfoCarro_root > .carro > .carro_infos {
   display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 12px 14px;
+  justify-content: center;
+  gap: 30%;
+  padding: 12px 0 12px 0;
 }
 
 .PaginaInfoCarro_root > .carro > .carro_infos > .carro_infos_textos {
   display: flex;
   flex-direction: column;
   gap: 6px;
-  flex: 1;
   min-width: 0;
 }
 
