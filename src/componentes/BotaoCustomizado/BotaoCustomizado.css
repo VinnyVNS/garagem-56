@@ -71,6 +71,12 @@
   border-color: var(--cor-primaria);
 }
 
-.BotaoCustomizado_root.BotaoCustomizado_cadastrar:hover:not(:disabled) {
+/* .BotaoCustomizado_root.BotaoCustomizado_cadastrar:hover:not(:disabled) {
   background-color: rgba(15, 23, 42, 0.05);
+} */
+
+.BotaoCustomizado_root.BotaoCustomizado_excluir {
+  color: white;
+  background-color: var(--cor-vermelha);
+  border-color: white;
 }

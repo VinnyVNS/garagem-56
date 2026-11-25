@@ -32,6 +32,8 @@
   text-decoration: none;
   border-radius: 14px;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
   transition:
     transform 0.2s ease,
     color 0.2s ease,
@@ -39,20 +41,10 @@
     opacity 0.2s ease;
 }
 
-/* .Rodape_root > .Rodape_item:hover:not(.disabled) {
-  color: #ffffff;
-  background-color: rgba(255, 255, 255, 0.08);
-} */
-
 .Rodape_root > .Rodape_item.ativo {
   color: var(--cor-secundaria);
   background-color: rgba(255, 255, 255, 0.14);
   transform: translateY(-2px);
-}
-
-.Rodape_root > .Rodape_item.disabled {
-  opacity: 0.45;
-  cursor: default;
 }
 
 /* ==========================================

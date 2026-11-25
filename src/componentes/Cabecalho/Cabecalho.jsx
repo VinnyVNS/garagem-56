@@ -7,7 +7,7 @@ function Cabecalho() {
   const location = useLocation();
 
   const paginasLogo =
-    location.pathname === "/" || location.pathname === "/lista-carros";
+    location.pathname === "/" || location.pathname === "/lista-carros" || location.pathname === "/perfil";
 
   return (
     <header className="Cabecalho_root">

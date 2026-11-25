@@ -9,14 +9,14 @@
 }
 
 /* ==========================================
-   RÓTULO (LABEL)
+   RÓTULO (LABEL) - PADRÃO (FUNDO BRANCO)
    ========================================== */
 .InputCustom_root > .label {
   padding: 0 4px;
   font-size: 13px;
   font-weight: 600;
   line-height: 1.2;
-  color: #334155;
+  color: #1e293b;
   transition: color 0.15s ease;
 }
 
@@ -25,7 +25,7 @@
 }
 
 /* ==========================================
-   CAMPO DE TEXTO (INPUT)
+   CAMPO DE TEXTO (INPUT) - PADRÃO (FUNDO BRANCO)
    ========================================== */
 .InputCustom_root > .input {
   width: 100%;
@@ -39,6 +39,7 @@
   border: 1.5px solid rgba(15, 23, 42, 0.2);
   border-radius: 12px;
   outline: none;
+  box-sizing: border-box;
   transition:
     border-color 0.15s ease,
     box-shadow 0.15s ease,
@@ -52,11 +53,38 @@
 
 .InputCustom_root > .input:focus {
   border-color: var(--cor-primaria);
-  box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.12);
+  box-shadow: 0 0 0 3px rgba(26, 35, 126, 0.14);
 }
 
 .InputCustom_root > .input:disabled {
   background-color: #f1f5f9;
   color: #64748b;
   cursor: not-allowed;
+}
+
+/* ==========================================
+   VARIANTE ESCURA (LOGIN E CADASTRO DE USUÁRIO)
+   ========================================== */
+.InputCustom_root.escuro > .label {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.InputCustom_root.escuro:focus-within > .label {
+  color: var(--cor-secundaria);
+}
+
+.InputCustom_root.escuro > .input {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+}
+
+.InputCustom_root.escuro > .input::placeholder {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.InputCustom_root.escuro > .input:focus {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: var(--cor-secundaria);
+  box-shadow: 0 0 0 3px rgba(255, 214, 0, 0.2);
 }

@@ -18,6 +18,8 @@ function BotaoCustomizado({
     classes.push("BotaoCustomizado_entrar");
   } else if (tipo === "cadastrar") {
     classes.push("BotaoCustomizado_cadastrar");
+  } else if (tipo === "excluir") {
+    classes.push("BotaoCustomizado_excluir");
   }
 
   if (className) {

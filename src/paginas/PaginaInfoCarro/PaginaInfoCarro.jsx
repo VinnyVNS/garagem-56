@@ -1,17 +1,19 @@
 import { useEffect } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { toast } from "react-toastify";
 import Principal from "../../componentes/Principal/Principal";
-import { salvarLocalStorage } from "../../servicos/localstorage.servico";
-import { buscarCarros } from "../../servicos/carros.servico";
+import {
+  buscarLocalStorage,
+  salvarLocalStorage,
+} from "../../servicos/localstorage.servico";
+import { buscarCarros, excluirCarro } from "../../servicos/carros.servico";
 import carroPlaceholder from "../../assets/carro-placeholder.jpg";
 import "./PaginaInfoCarro.css";
 
 const TOAST_EXCLUSAO_ID = "confirmar-exclusao";
 
 function PaginaInfoCarro() {
-  const location = useLocation();
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -21,10 +23,8 @@ function PaginaInfoCarro() {
     };
   }, []);
 
-  const carrosSalvos = buscarCarros() || [];
-  const carro =
-    carrosSalvos.find((item) => String(item.id) === String(id)) ||
-    location.state?.carro;
+  const carrosDoUsuario = buscarCarros() || [];
+  const carro = carrosDoUsuario.find((item) => String(item.id) === String(id));
 
   if (!carro) {
     return (
@@ -39,15 +39,11 @@ function PaginaInfoCarro() {
   }
 
   const editarCarro = () => {
-    navigate(`/cadastro-carro/${carro.id}`, { state: { carro } });
+    navigate(`/cadastro-carro/${carro.id}`);
   };
 
   const confirmarExclusao = (closeToast) => {
-    const todosOsCarros = buscarCarros() || [];
-    const carrosAtualizados = todosOsCarros.filter(
-      (item) => String(item.id) !== String(carro.id),
-    );
-    salvarLocalStorage("carros", carrosAtualizados);
+    excluirCarro(carro.id);
 
     closeToast();
     toast.success("Carro excluído com sucesso!", {
@@ -59,7 +55,7 @@ function PaginaInfoCarro() {
     navigate("/lista-carros");
   };
 
-  const excluirCarro = () => {
+  const abrirConfirmacaoExclusao = () => {
     toast.warn(
       ({ closeToast }) => (
         <div className="toast_exclusao_container">
@@ -120,7 +116,7 @@ function PaginaInfoCarro() {
               <button
                 type="button"
                 className="btn_acao excluir"
-                onClick={excluirCarro}
+                onClick={abrirConfirmacaoExclusao}
                 aria-label="Excluir carro"
               >
                 <FaTrashAlt className="lixeira" aria-hidden="true" />

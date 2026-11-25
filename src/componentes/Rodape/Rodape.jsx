@@ -21,9 +21,7 @@ function Rodape() {
         to="/"
         end
         onClick={rolarParaOTopo}
-        className={({ isActive }) =>
-          `Rodape_item ${isActive ? "ativo" : ""}`
-        }
+        className={({ isActive }) => `Rodape_item ${isActive ? "ativo" : ""}`}
       >
         <FaHome className="Rodape_icone" />
         <span className="Rodape_texto">Home</span>
@@ -38,11 +36,14 @@ function Rodape() {
         <span className="Rodape_texto">Carros</span>
       </NavLink>
 
-      {/* Quando criar a PaginaPerfil, basta trocar esta div por um NavLink para "/perfil" */}
-      <div className="Rodape_item disabled" aria-disabled="true">
+      <NavLink
+        to="/perfil"
+        onClick={rolarParaOTopo}
+        className={({ isActive }) => `Rodape_item ${isActive ? "ativo" : ""}`}
+      >
         <RxAvatar className="Rodape_icone" />
         <span className="Rodape_texto">Perfil</span>
-      </div>
+      </NavLink>
     </footer>
   );
 }
