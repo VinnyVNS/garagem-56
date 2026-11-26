@@ -9,9 +9,12 @@
   gap: 22px;
   width: 100%;
   min-height: 100dvh;
-  padding: 80px 18px;
-  background: radial-gradient(circle at top, #283593 0%, var(--cor-primaria) 70%);
-  box-sizing: border-box;
+  padding: 22px 18px;
+  background: radial-gradient(
+    circle at top,
+    #283593 0%,
+    var(--cor-primaria) 70%
+  );
 }
 
 /* ==========================================
@@ -106,7 +109,9 @@
   font-size: 18px;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
-  transition: color 0.15s ease, background-color 0.15s ease;
+  transition:
+    color 0.15s ease,
+    background-color 0.15s ease;
 }
 
 .PaginaLoginUsuario_root .btn_olho_senha:active {
@@ -141,7 +146,9 @@
   text-decoration: none;
   border-radius: 999px;
   -webkit-tap-highlight-color: transparent;
-  transition: opacity 0.15s ease, transform 0.15s ease;
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease;
 }
 
 .PaginaLoginUsuario_root > .btns > a > strong {
@@ -167,7 +174,9 @@
   border-radius: 12px;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
-  transition: background-color 0.15s ease, transform 0.15s ease;
+  transition:
+    background-color 0.15s ease,
+    transform 0.15s ease;
 }
 
 .PaginaLoginUsuario_root > .btns > .btn_visitante:active {

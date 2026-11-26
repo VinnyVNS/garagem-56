@@ -9,13 +9,12 @@
   gap: 22px;
   width: 100%;
   min-height: 100dvh;
-  padding: 80px 18px;
+  padding: 22px 18px;
   background: radial-gradient(
     circle at top,
     #283593 0%,
     var(--cor-primaria) 70%
   );
-  box-sizing: border-box;
 }
 
 /* ==========================================
