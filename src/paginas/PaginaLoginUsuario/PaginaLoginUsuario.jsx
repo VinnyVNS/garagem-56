@@ -66,6 +66,7 @@ function PaginaLoginUsuario() {
           <h2 className="campos_texto">Entrar</h2>
           <InputCustom
             label="Email"
+            placeholder="Digite seu email..."
             tema="escuro"
             type="email"
             value={formLogin.email}
@@ -77,6 +78,7 @@ function PaginaLoginUsuario() {
           <div className="campo_senha_wrapper">
             <InputCustom
               label="Senha"
+              placeholder="Digite sua senha..."
               tema="escuro"
               type={mostrarSenha ? "text" : "password"}
               value={formLogin.senha}

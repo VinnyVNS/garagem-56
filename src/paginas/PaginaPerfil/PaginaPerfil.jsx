@@ -11,6 +11,7 @@ import {
 import "./PaginaPerfil.css";
 
 const TOAST_EXCLUSAO_USUARIO_ID = "confirmar-exclusao-usuario";
+const TOAST_SAIR_USUARIO_ID = "confirmar-sair-usuario";
 
 function PaginaPerfil() {
   const navigate = useNavigate();
@@ -25,8 +26,15 @@ function PaginaPerfil() {
     };
   }, []);
 
-  const handleSair = () => {
+  const handleSair = (closeToast) => {
     sairDaConta();
+    closeToast();
+    toast.success("Você saiu com sucesso!", {
+      position: "top-center",
+      theme: "colored",
+      hideProgressBar: true,
+      autoClose: 2000,
+    });
     navigate("/login", { replace: true });
   };
 
@@ -80,11 +88,46 @@ function PaginaPerfil() {
     );
   };
 
+  const abrirConfirmacaoSair = () => {
+    toast.warn(
+      ({ closeToast }) => (
+        <div className="toast_exclusao_container">
+          <p className="toast_exclusao_texto">
+            Deseja sair da sua conta?
+          </p>
+          <div className="toast_exclusao_botoes">
+            <button
+              type="button"
+              className="toast_btn toast_btn_sim"
+              onClick={() => handleSair(closeToast)}
+            >
+              Sim
+            </button>
+            <button
+              type="button"
+              className="toast_btn toast_btn_nao"
+              onClick={closeToast}
+            >
+              Não
+            </button>
+          </div>
+        </div>
+      ),
+      {
+        position: "top-center",
+        autoClose: false,
+        closeOnClick: false,
+        draggable: false,
+        toastId: TOAST_SAIR_USUARIO_ID,
+      },
+    );
+  };
+
   return (
     <Principal>
       <div className="PaginaPerfil_root">
         <div className="PaginaPerfil_acoes">
-          <BotaoCustomizado tipo="excluir" onClick={handleSair}>
+          <BotaoCustomizado tipo="excluir" onClick={abrirConfirmacaoSair}>
             Sair
           </BotaoCustomizado>
 

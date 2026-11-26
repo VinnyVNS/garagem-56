@@ -70,7 +70,11 @@
   flex-shrink: 0;
 }
 
-.PaginaInfoCarro_root > .carro > .carro_modelo_icones > .carro_icones > .btn_acao {
+.PaginaInfoCarro_root
+  > .carro
+  > .carro_modelo_icones
+  > .carro_icones
+  > .btn_acao {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -81,28 +85,52 @@
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  transition: transform 0.15s ease, background-color 0.15s ease;
+  transition:
+    transform 0.15s ease,
+    background-color 0.15s ease;
 }
 
-.PaginaInfoCarro_root > .carro > .carro_modelo_icones > .carro_icones > .btn_acao:active {
+.PaginaInfoCarro_root
+  > .carro
+  > .carro_modelo_icones
+  > .carro_icones
+  > .btn_acao:active {
   transform: scale(0.94);
 }
 
-.PaginaInfoCarro_root > .carro > .carro_modelo_icones > .carro_icones > .btn_acao.editar:hover {
+.PaginaInfoCarro_root
+  > .carro
+  > .carro_modelo_icones
+  > .carro_icones
+  > .btn_acao.editar:hover {
   background-color: rgba(15, 23, 42, 0.09);
 }
 
-.PaginaInfoCarro_root > .carro > .carro_modelo_icones > .carro_icones > .btn_acao.excluir:hover {
+.PaginaInfoCarro_root
+  > .carro
+  > .carro_modelo_icones
+  > .carro_icones
+  > .btn_acao.excluir:hover {
   background-color: rgba(220, 38, 38, 0.1);
 }
 
-.PaginaInfoCarro_root > .carro > .carro_modelo_icones > .carro_icones > .btn_acao > .editor {
+.PaginaInfoCarro_root
+  > .carro
+  > .carro_modelo_icones
+  > .carro_icones
+  > .btn_acao
+  > .editor {
   width: 18px;
   height: 18px;
   color: var(--cor-primaria);
 }
 
-.PaginaInfoCarro_root > .carro > .carro_modelo_icones > .carro_icones > .btn_acao > .lixeira {
+.PaginaInfoCarro_root
+  > .carro
+  > .carro_modelo_icones
+  > .carro_icones
+  > .btn_acao
+  > .lixeira {
   width: 18px;
   height: 18px;
   color: var(--cor-vermelha);
@@ -113,16 +141,23 @@
    ========================================== */
 .PaginaInfoCarro_root > .carro > .carro_infos {
   display: flex;
-  justify-content: center;
-  gap: 10%;
-  padding: 12px 0 12px 0;
+  justify-content: space-between;
+  gap: 5%;
+  padding: 12px 30px 12px 30px;
 }
 
-.PaginaInfoCarro_root > .carro > .carro_infos > .carro_infos_textos {
+.PaginaInfoCarro_root > .carro > .carro_infos > .carro_infos_textos_esquerda {
   display: flex;
   flex-direction: column;
-  flex: 1;
-  padding-left: 20px;
+  justify-content: flex-start;
+  gap: 6px;
+  min-width: 0;
+}
+
+.PaginaInfoCarro_root > .carro > .carro_infos > .carro_infos_textos_direita {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   gap: 6px;
   min-width: 0;
 }

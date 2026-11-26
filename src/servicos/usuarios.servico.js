@@ -12,7 +12,6 @@ export const salvarUsuario = (usuario) => {
 
   const emailFormatado = usuario.email.trim().toLowerCase();
 
-  // Verifica se já existe outro usuário com o mesmo e-mail
   const emailJaExiste = usuarios.some(
     (u) => u.email.toLowerCase() === emailFormatado && u.id !== usuario.id,
   );
@@ -53,7 +52,6 @@ export const autenticarUsuario = (email, senha) => {
     return null;
   }
 
-  // Salva a sessão sem expor a senha na chave de usuário logado
   const { senha: _, ...dadosSessao } = usuarioEncontrado;
   salvarLocalStorage(CHAVE_USUARIO_LOGADO, dadosSessao);
 
@@ -81,20 +79,17 @@ export const sairDaConta = () => {
 };
 
 export const excluirUsuario = (idUsuario) => {
-  // 1. Remove o usuário da lista de contas
   const usuarios = buscarLocalStorage("usuarios") || [];
   const usuariosAtualizados = usuarios.filter(
     (u) => String(u.id) !== String(idUsuario)
   );
   salvarLocalStorage("usuarios", usuariosAtualizados);
 
-  // 2. Remove os carros pertencentes a esse usuário
   const todosCarros = buscarLocalStorage("carros") || [];
   const carrosAtualizados = todosCarros.filter(
     (c) => String(c.usuarioId) !== String(idUsuario)
   );
   salvarLocalStorage("carros", carrosAtualizados);
 
-  // 3. Encerra a sessão atual
   sairDaConta();
 };

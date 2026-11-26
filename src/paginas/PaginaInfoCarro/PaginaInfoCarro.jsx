@@ -60,7 +60,7 @@ function PaginaInfoCarro() {
       ({ closeToast }) => (
         <div className="toast_exclusao_container">
           <p className="toast_exclusao_texto">
-            Deseja excluir o carro {carro.modelo}, placa {carro.placa}?
+            Deseja excluir o carro {carro.modelo}, placa {carro.placa || "Não informado"}?
           </p>
           <div className="toast_exclusao_botoes">
             <button
@@ -125,7 +125,7 @@ function PaginaInfoCarro() {
           </div>
 
           <div className="carro_infos">
-            <div className="carro_infos_textos">
+            <div className="carro_infos_textos_esquerda">
               <span className="texto">
                 <strong>Marca:</strong> {carro.marca}
               </span>
@@ -134,7 +134,7 @@ function PaginaInfoCarro() {
               </span>
             </div>
 
-            <div className="carro_infos_textos">
+            <div className="carro_infos_textos_direita">
               <span className="texto">
                 <strong>Ano:</strong> {carro.ano || "Não informado"}
               </span>

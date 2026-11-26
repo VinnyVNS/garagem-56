@@ -5,11 +5,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 22px;
   width: 100%;
   min-height: 100dvh;
-  padding: 28px 18px 150px;
+  padding: 80px 18px;
   background: radial-gradient(
     circle at top,
     #283593 0%,

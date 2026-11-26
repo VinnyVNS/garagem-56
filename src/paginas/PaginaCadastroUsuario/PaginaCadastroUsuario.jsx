@@ -95,7 +95,8 @@ function PaginaCadastroUsuario() {
         <div className="campos">
           <h2 className="campos_texto">Cadastrar-se</h2>
           <InputCustom
-            label="Email"
+            label="Email *"
+            placeholder="Digite seu email..."
             tema="escuro"
             type="email"
             value={formUsuario.email}
@@ -104,7 +105,8 @@ function PaginaCadastroUsuario() {
             }
           />
           <InputCustom
-            label="Nome"
+            label="Nome *"
+            placeholder="Digite seu nome..."
             tema="escuro"
             value={formUsuario.nome}
             onChange={(e) =>
@@ -114,7 +116,8 @@ function PaginaCadastroUsuario() {
 
           <div className="campo_senha_wrapper">
             <InputCustom
-              label="Senha"
+              label="Senha *"
+              placeholder="Digite sua nova senha..."
               tema="escuro"
               type={mostrarSenha ? "text" : "password"}
               value={formUsuario.senha}
@@ -134,7 +137,8 @@ function PaginaCadastroUsuario() {
 
           <div className="campo_senha_wrapper">
             <InputCustom
-              label="Repetir Senha"
+              label="Repetir Senha *"
+              placeholder="Repita sua nova senha..."
               tema="escuro"
               type={mostrarRepetirSenha ? "text" : "password"}
               value={repetirSenha}
