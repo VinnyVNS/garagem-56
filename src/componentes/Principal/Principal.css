@@ -1,4 +1,56 @@
 .Principal_root {
-    display: flex;
-    flex-direction: column;
+  position: relative;
+  min-height: 100%;
+}
+
+.Principal_root.sem_navegacao {
+  grid-row: 1 / -1;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* Arrastou para a esquerda (Home -> Carros -> Perfil) */
+.Principal_root.transicao_avancar {
+  animation: deslizarAvancar 0.24s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Arrastou para a direita (Perfil -> Carros -> Home) */
+.Principal_root.transicao_voltar {
+  animation: deslizarVoltar 0.24s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Quando troca de tela clicando direto no Rodapé */
+.Principal_root.transicao_fade {
+  animation: aparecerSuave 0.18s ease-out;
+}
+
+@keyframes deslizarAvancar {
+  from {
+    opacity: 0.4;
+    left: 36px;
+  }
+  to {
+    opacity: 1;
+    left: 0;
+  }
+}
+
+@keyframes deslizarVoltar {
+  from {
+    opacity: 0.4;
+    left: -36px;
+  }
+  to {
+    opacity: 1;
+    left: 0;
+  }
+}
+
+@keyframes aparecerSuave {
+  from {
+    opacity: 0.6;
+  }
+  to {
+    opacity: 1;
+  }
 }

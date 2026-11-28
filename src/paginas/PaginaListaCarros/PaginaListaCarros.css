@@ -4,8 +4,9 @@
 .PaginaListaCarros_root {
   display: flex;
   flex-direction: column;
+  min-height: 100%;
   gap: 12px;
-  padding: 14px 14px 112px;
+  padding: 14px 14px 94px;
 }
 
 /* ==========================================
@@ -42,6 +43,7 @@
   align-items: stretch;
   width: 100%;
   min-height: 132px;
+  max-height: 132px;
   background-color: var(--cor-card);
   border: 1px solid rgba(15, 23, 42, 0.12);
   border-radius: 14px;
@@ -56,6 +58,7 @@
   width: 42%;
   height: auto;
   min-height: 132px;
+  max-height: 132px;
   object-fit: cover;
   border-top-left-radius: 14px;
   border-bottom-left-radius: 14px;
